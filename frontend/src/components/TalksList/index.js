@@ -9,9 +9,7 @@ export default function TalksList() {
             <div className="list">
                 <div className="icon-talk"></div>
                 <div className="icon-talk"></div>
-
                 <div className="icon-talk"></div>
-
             </div>
         </>
     );

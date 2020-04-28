@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.login-div {
+    margin: auto;
+    margin-top: 40px;
+    width: 430px;
+    height: 400px;
+    padding: 60px 35px 35px 35px;
+    border-radius: 40px;
+    background: #ecf0f3;
+    box-shadow: 13px 13px 20px #cbced1,
+                -13px -13px 20px #ffffff;
+  }
+
+.logo {
+    background:0;
+    width:100px;
+    height: 100px;
+    border-radius: 50%;
+    margin:0 auto;
+    box-shadow: 
+    /* logo shadow */
+    0px 0px 2px #5f5f5f,
+    /* offset */
+    0px 0px 0px 5px #ecf0f3,
+    /*bottom right */
+    8px 8px 15px #a7aaaf,
+    /* top left */
+    -8px -8px 15px #ffffff;
+}
+
+.title {
+    text-align: center;
+    font-size: 28px;
+    padding-top: 24px;
+    letter-spacing: 0.5px;
+}
+
+.sub-title {
+    text-align: center;
+    font-size: 15px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    letter-spacing: 1px;
+}
+
+.btn-login-div {
+    padding-left: 30px;
+}
+
+.btn-login {
+    background: url('./Sign-In-Small---Default.png');
+    outline: none;
+    border:none;
+    cursor: pointer;
+    width: 292px;
+    height: 40px;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: 'Lato', sans-serif;
+    color:#fff;
+    text-align: center;
+    box-shadow: 3px 3px 8px #b1b1b1,
+                -3px -3px 8px #ffffff;
+    transition: 0.5s;
+}

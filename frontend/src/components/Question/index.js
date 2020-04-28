@@ -8,13 +8,27 @@ export default function Question() {
 
     return (
         <>    
-        <Row style={{"margin-bottom": "10px", "height": "60px"}}>
-            <Col md={10}>
-                <div className="question">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
+        <Row style={{"margin-bottom": "10px", "max-height": "80px"}}>
+            <Col md={10}  style={{"margin-top": "2%"}}>
+                <div className="question">
+                    <Row>
+                        <Col md={2}>
+                            <div className="avatar-pic"></div>
+                        </Col>
+                        <Col className="question-content" md={10} style={{"overflow-y": "auto", "max-height": "70px"}}>
+                            <Row>
+                                <span><strong> Fulano da Silva </strong></span>
+                            </Row>
+                            <Row>
+                                <span> Como pode um peixe vivo viver fora da água fria? Como pode um peixe vivo viver fora da água fria?Como pode um peixe vivo viver fora da água fria?Como pode um peixe vivo viver fora da água fria?aaaaaaaaaa </span>
+                            </Row>
+                        </Col>
+                    </Row>
+                </div>
             </Col>
-            <Col md={2}>
-                <Button variant="success"> <FaThumbsUp style={{"display":"flex", "margin-top": "-3px"}}> </FaThumbsUp> </Button>
-                <Button variant="danger"> <FaThumbsDown style={{"display":"flex", "margin-top": "-3px"}}> </FaThumbsDown> </Button>
+            <Col md={2} style={{"margin-top": "2%"}}>
+                <Button variant="success"> <FaThumbsUp style={{"display":"flex"}}> </FaThumbsUp> </Button>
+                <Button variant="danger"> <FaThumbsDown style={{"display":"flex"}}> </FaThumbsDown> </Button>
             </Col>
         </Row>
         </>

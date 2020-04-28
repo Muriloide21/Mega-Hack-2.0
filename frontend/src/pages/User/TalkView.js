@@ -4,7 +4,8 @@ import socketio from 'socket.io-client';
 import 'bootstrap/dist/css/bootstrap.css';
 import './TalkView.css';
 
-import Questions from '../../components/Questions'
+import InteractiveBar from '../../components/InteractiveBar'
+import Stream from '../../components/Stream'
 import TalksList from '../../components/TalksList'
 
 export default function TalkView(){
@@ -30,20 +31,18 @@ export default function TalkView(){
 
     return (
         <>
-        <h1>Palestra 4</h1>
             <Row>
-                <Col md={1}>
+                <Col md={2}>
                     <TalksList />
                 </Col>
-                <Col md={8}>
-                    <iframe title="video" width="100%" height="500" src="https://www.youtube.com/embed/6Af6b_wyiwI" frameborder="0" showinfo="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" modestbranding allowfullscreen></iframe>
+                <Col md={7}>
+                    <Stream/>
                 </Col>
                 <Col md={3} >
-                    <Questions />
+                    <InteractiveBar/>
                 </Col>
             </Row>
         </>
     );
 }
-
 
