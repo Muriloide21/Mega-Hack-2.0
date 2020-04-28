@@ -11,5 +11,5 @@ Integrantes:
 - [Leonardo](github.com/LKhoe) E-mail: leonardokhoury@hotmail.com
 - [Matheus](github.com/Math-Gomes) E-mail: mathjvmf@gmail.com
 - [Murilo](https://github.com/Muriloide21/) E-mail: muriloschirmer16@gmail.com
-- [Vinicius]() E-mail:
+- [Vinicius]() E-mail: vinilucasreis1999@yahoo.com.br
 
