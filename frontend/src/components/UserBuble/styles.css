@@ -1,0 +1,23 @@
+.user-div{
+    width: 95%;
+    height: 80px;
+    background-color: #c4c4c4;
+    border-radius: 8px;
+    margin-top: 10px;
+    transform: translate(2.5%);
+    padding: 5px;
+    display: flex;
+}
+
+.user-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+    transform: translate(10%,20%);
+}
+
+.content-div{
+   /* margin-left: 40px;  */
+   transform: translate(-70%,10%);
+}

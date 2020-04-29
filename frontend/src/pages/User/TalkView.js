@@ -12,9 +12,9 @@ export default function TalkView(){
     const [questions, setQuestions] = useState([]);
     const user_id = 145;
 
-    const socket = useMemo(() => socketio('http://localhost:3333', {
-        query: { user_id },
-    }), [user_id]);
+    // const socket = useMemo(() => socketio('http://localhost:3333', {
+    //     query: { user_id },
+    // }), [user_id]);
    
     // useEffect(() => {
     //     socket.on('NewQuestion', data => {
