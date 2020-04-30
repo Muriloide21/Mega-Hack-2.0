@@ -3,7 +3,7 @@
     height: 85px;
     background-color: #ffffff;
     border-radius: 8px;
-    margin-top: 10px;
+    margin-bottom: 10px;
     transform: translate(2.5%);
     padding: 5px;
     border: 2px solid #c4c4c4;
@@ -37,6 +37,7 @@
     color: #000000;
     grid-row: 1;
     font-size: large;
+    font-weight: bold;
 }
 
 .user-skill {

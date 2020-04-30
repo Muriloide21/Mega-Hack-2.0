@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import MetisMenu from 'react-metismenu';
 import { MdHome, MdPermIdentity } from 'react-icons/md'
 import { AiTwotoneSetting } from 'react-icons/ai'
@@ -82,19 +82,19 @@ export default function TalksList() {
     return (
         <>
             <div className="outer-div">
-                <div className="container-home">
-                    <div className="home-btn">
-                        <div className="home-icon"><MdHome/></div>
-                        <div className="home-text">Home</div>
-                    </div>
-                </div>
                 <div className="event-name">Nome do evento</div>
+                <div className="container-home">
+                    <div className="home-icon"><MdHome/></div>
+                    <div className="home-text">Home</div>
+                </div> 
                 <MetisMenu content={content}/>
                 <div className="wheelfoot">
-                    <div className="wf-container">
-                        <div className="wf-icon"><MdPermIdentity/></div>
-                        <div className="wf-text"><strong>Logout</strong></div>
-                        <div className="wf-settings"><div className="icon-set"><AiTwotoneSetting/></div></div>
+                    <div className="wf-icon"><MdPermIdentity/></div>
+                    <div className="wf-text"><strong>Logout</strong></div>
+                    <div className="wf-settings">
+                        <div className="icon-set">
+                            <AiTwotoneSetting/>
+                        </div>
                     </div>
                 </div>
             </div>

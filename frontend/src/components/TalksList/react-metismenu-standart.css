@@ -69,6 +69,7 @@
 }
 .metismenu-container.visible {
   padding: .5em 0;
+  background: #ECECEC;
 }
 .metismenu-container.visible > .metismenu-item > .metismenu-link {
   height: 2.5em;
@@ -90,12 +91,13 @@
 .metismenu-link.active {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   -webkit-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background: #F53;
-  color: #FFF;
+  background: white;
+  color: black;
 }
 .metismenu-link.has-active-child {
-  color: #F53;
+  background: black;
 }
+
 I.metismenu-icon {
   text-align: center;
   width: 3em;
@@ -114,5 +116,5 @@ I.metismenu-state-icon.rotate-minus-90 {
 }
 
 .metismenu-item {
-  color: white;
+  color: black;
 }
