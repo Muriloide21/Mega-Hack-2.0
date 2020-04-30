@@ -22,12 +22,6 @@ export default function QuestionsContainer() {
         document.getElementById('content').value = '';
     }
 
-    function initialTab(e){
-        e.target.click();
-    }
-
-
-
     return (
         <>
         <div className="generic-list-container">
