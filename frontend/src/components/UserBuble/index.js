@@ -11,9 +11,9 @@ export default function UserBuble() {
             </Col>
             <Col>
                 <div className="content-div">
-                    <text><strong>Fulano da silva</strong></text>
-                    <br/>
-                    <text>Desenvolvedor Desenvolvido</text>
+
+                    <text className="user-name"><strong>Fulano da silva</strong></text>
+                    <text className="user-skill">UX Designer</text>
                 </div>
             </Col>
         </div>

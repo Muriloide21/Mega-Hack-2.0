@@ -54,7 +54,6 @@
     border-radius: 4px 4px 4px 4px;
     position: relative;
     overflow-y: auto;
-
 }
 
 .users::-webkit-scrollbar {

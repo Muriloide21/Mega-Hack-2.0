@@ -27,20 +27,25 @@ export default function InteractiveBar() {
                     </div>
                     <div label={<FaUserAlt />}>
                         <div className="users">
-                            <ul className="users-list">
-                                <li className="users-list-item"><UserBuble /></li>
-                                <li className="users-list-item"><UserBuble /></li>
-                                <li className="users-list-item"><UserBuble /></li>
-                                <li className="users-list-item"><UserBuble /></li>
-                                <li className="users-list-item"><UserBuble /></li>
-                                <li className="users-list-item"><UserBuble /></li>
-                                <li className="users-list-item"><UserBuble /></li>
-                                <li className="users-list-item"><UserBuble /></li>
-                                <li className="users-list-item"><UserBuble /></li>
-                                <li className="users-list-item"><UserBuble /></li>
-                                <li className="users-list-item"><UserBuble /></li>
-                                <li className="users-list-item"><UserBuble /></li>
-                            </ul>
+                            <div className="users-title">
+
+                            </div>
+                            <div className="users-list-div">
+                                <ul className="users-list">
+                                    <li className="users-list-item"><UserBuble /></li>
+                                    <li className="users-list-item"><UserBuble /></li>
+                                    <li className="users-list-item"><UserBuble /></li>
+                                    <li className="users-list-item"><UserBuble /></li>
+                                    <li className="users-list-item"><UserBuble /></li>
+                                    <li className="users-list-item"><UserBuble /></li>
+                                    <li className="users-list-item"><UserBuble /></li>
+                                    <li className="users-list-item"><UserBuble /></li>
+                                    <li className="users-list-item"><UserBuble /></li>
+                                    <li className="users-list-item"><UserBuble /></li>
+                                    <li className="users-list-item"><UserBuble /></li>
+                                    <li className="users-list-item"><UserBuble /></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
