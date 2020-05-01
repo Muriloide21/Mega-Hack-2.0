@@ -8,7 +8,8 @@ import styled from 'styled-components';
 
 const Container = styled.div`
     flex: 1;
-    padding: 2% 5%;
+    width: 100%;
+    padding: 2% 5% 0;
     background: ${({darkMode}) => darkMode ? '#293c43' : '#ffffff'};
     overflow-y: auto;
     &::-webkit-scrollbar {
@@ -32,15 +33,33 @@ const VideoInfo = styled.div`
 `;
 
 const ManagementBar = styled.div`
+    /* background: #191919;
+    border-radius: 16px 16px 0px 0px;
+    height: 50px;
+    min-width: 240px;
+    width: 28%;
+    position: fixed;
+    justify-content: space-between;
+    bottom: 0;
+    left: calc(21.35% + 70px);
+    left: 22.35%;
+    left: calc(25% - 70px);
+    transform: translate(-50%);
+    display: flex;
+    padding: 10px 18px 0px 18px; */
+    position: sticky;
+    position: -webkit-sticky;
+    bottom: 0;
     background: #191919;
     border-radius: 16px 16px 0px 0px;
     height: 50px;
-    width: 42%;
-    position: absolute;
+    min-width: 240px;
+    width: 28%;
     justify-content: space-between;
-    bottom: 0;
-    left: 29%;
-    display: block;
+    display: flex;
+    margin: auto;
+    padding: 10px 18px 0px 18px;
+    transform: translateY(375%);
 `;
 
 const Icon = styled.div`
@@ -49,7 +68,7 @@ const Icon = styled.div`
     background-color: transparent;
     cursor: pointer;
     margin: 0;
-    display: inline-block;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     color: #446165;
@@ -82,7 +101,7 @@ export default function Stream({ management }) {
             : 
                 <>
                 <ManagementBar>
-                    <Icon><MdMic size={40}/></Icon>
+                    <Icon style={{marginLeft: -8}}><MdMic size={40}/></Icon>
                     <Icon><MdVideocam size={40}/></Icon>
                     <Icon><MdLaptop size={40}/></Icon>
                     <Icon><MdViewList size={40}/></Icon>

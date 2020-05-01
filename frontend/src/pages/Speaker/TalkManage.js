@@ -15,7 +15,7 @@ const Container = styled.div`
 `;
 
 const LeftBar = styled.div`
-    width: 4.3%;
+    width: 70px;
     height: 100%;
     display: flex;
     flex-flow: column;

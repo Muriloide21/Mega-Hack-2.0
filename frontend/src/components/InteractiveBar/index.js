@@ -1,15 +1,14 @@
 import React, { useState, useRef } from 'react'
+import { saveAs } from 'file-saver';
 
 import Tabs from '../Tabs/Tabs';
-import QuestionsContainer from '../../components/QuestionsContainer'
 import Question from '../../components/Question'
-import ChatBox from '../../components/ChatBox'
 import UserBuble from '../../components/UserBuble'
 
 import { FaCommentAlt, FaListUl, FaUserAlt, FaStickyNote } from "react-icons/fa";
 import { MdSend } from "react-icons/md";
-
-// import './styles.css'
+import { IoMdCopy } from "react-icons/io";
+import { FiDownload } from "react-icons/fi";
 
 import styled from 'styled-components';
 
@@ -19,7 +18,7 @@ const Container = styled.div`
     padding: 10px 25px;
 `;
 
-const QuestionList = styled.div`
+const List = styled.div`
     overflow-y: auto;
     height: 100%;
     &::-webkit-scrollbar {
@@ -47,15 +46,22 @@ const TextArea = styled.textarea`
 `;
 
 const TitleBar = styled.div`
+    box-sizing: border-box;
     width: 100%; 
     height: 45px;
     background: white;
     border-radius: 4px;
+    padding: 0 15px;
 
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     font-size: 17px;
+`;
+
+const ButtonGroup = styled.div`
+    display: flex;
+    align-items: center;
 `;
 
 export default function InteractiveBar() {
@@ -75,11 +81,11 @@ export default function InteractiveBar() {
         <Container>
             <Tabs defaultActiveTab='question-tab'>
                 <div id='question-tab' icon={<FaListUl />}>
-                    <QuestionList>
+                    <List>
                         {questions.map(question => (
                             <Question key={Math.random()} user={question.user} question_text={question.text}/>
                         ))}
-                    </QuestionList>
+                    </List>
                     
                     <MakeQuestion>
                         <TextArea ref={textRef} placeholder="Insira sua pergunta aqui..."/>    
@@ -103,6 +109,19 @@ export default function InteractiveBar() {
                 <div id='notes-tab' icon={<FaStickyNote />}>
                     <TitleBar>
                         <strong>Anotacões da palestra 4</strong>
+
+                        <ButtonGroup>
+                            <IoMdCopy size={20} style={{marginRight: 10}} onClick={(e) => {
+                                annotationsRef.current.select();
+                                document.execCommand('copy');
+                                e.target.focus();
+                            }}/>
+
+                            <FiDownload size={20} onClick={() => {
+                                const blob = new Blob([annotationsRef.current.value], {type: "text/plain;charset=utf-8"});
+                                saveAs(blob, "Anotacoes_da_palestra_4.txt");
+                            }}/>
+                        </ButtonGroup>
                     </TitleBar>
                     <TextArea
                         ref={annotationsRef}
@@ -112,15 +131,12 @@ export default function InteractiveBar() {
                 </div>
 
                 {/* Aba de Participantes da Palestra */}
-                <div id='users-tab' icon={<FaUserAlt />}>
-                    <TitleBar>
+                <div id='users-tab2' icon={<FaUserAlt />}>
+                    <TitleBar style={{minHeight: 45}}>
                         <strong>Usuários da palestra 4</strong>
                     </TitleBar>
 
-                    <QuestionList style={{marginTop: 12}}>
-                        {/* {users.map(user => (
-                            <UserBuble key={Math.random()} user={'Murilo'} skill={"Designer UX"}/>
-                        ))} */}
+                    <List style={{marginTop: 12}}>
                         <UserBuble key={Math.random()} user={'Athus'} skill={"Business"}/>
                         <UserBuble key={Math.random()} user={'Athus'} skill={"Business"}/>
                         <UserBuble key={Math.random()} user={'Athus'} skill={"Business"}/>
@@ -131,7 +147,11 @@ export default function InteractiveBar() {
                         <UserBuble key={Math.random()} user={'Athus'} skill={"Business"}/>
                         <UserBuble key={Math.random()} user={'Athus'} skill={"Business"}/>
                         <UserBuble key={Math.random()} user={'Athus'} skill={"Business"}/>
-                    </QuestionList>
+                        <UserBuble key={Math.random()} user={'Athus'} skill={"Business"}/>
+                        <UserBuble key={Math.random()} user={'Athus'} skill={"Business"}/>
+                        <UserBuble key={Math.random()} user={'Athus'} skill={"Business"}/>
+                        <UserBuble key={Math.random()} user={'Athus'} skill={"Business"}/>
+                    </List>
                 </div>
             </Tabs>
         </Container>
