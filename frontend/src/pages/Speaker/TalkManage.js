@@ -41,7 +41,6 @@ const Icon = styled.div`
     font-size: 20;
 `;
 
-
 export default function TalkManage(){
     return (
         <Container>

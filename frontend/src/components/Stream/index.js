@@ -12,9 +12,9 @@ const Container = styled.div`
     padding: 2% 5% 0;
     background: ${({darkMode}) => darkMode ? '#293c43' : '#ffffff'};
     overflow-y: auto;
-    &::-webkit-scrollbar {
+    /* &::-webkit-scrollbar {
         display: none;
-    }
+    } */
     position: relative;
 `;
 
@@ -33,33 +33,19 @@ const VideoInfo = styled.div`
 `;
 
 const ManagementBar = styled.div`
-    /* background: #191919;
-    border-radius: 16px 16px 0px 0px;
-    height: 50px;
-    min-width: 240px;
-    width: 28%;
-    position: fixed;
-    justify-content: space-between;
-    bottom: 0;
-    left: calc(21.35% + 70px);
-    left: 22.35%;
-    left: calc(25% - 70px);
-    transform: translate(-50%);
-    display: flex;
-    padding: 10px 18px 0px 18px; */
-    position: sticky;
-    position: -webkit-sticky;
-    bottom: 0;
     background: #191919;
     border-radius: 16px 16px 0px 0px;
     height: 50px;
     min-width: 240px;
     width: 28%;
-    justify-content: space-between;
+    position: fixed;
     display: flex;
-    margin: auto;
-    padding: 10px 18px 0px 18px;
-    transform: translateY(375%);
+    align-itens: center;
+    justify-content: space-between;
+    bottom: 0;
+    // left:100%;
+    transform: translate(50%);
+    padding: 10px 18px 0px 18px; 
 `;
 
 const Icon = styled.div`
@@ -100,13 +86,13 @@ export default function Stream({ management }) {
                 </>
             : 
                 <>
-                <ManagementBar>
-                    <Icon style={{marginLeft: -8}}><MdMic size={40}/></Icon>
-                    <Icon><MdVideocam size={40}/></Icon>
-                    <Icon><MdLaptop size={40}/></Icon>
-                    <Icon><MdViewList size={40}/></Icon>
-                    <Icon><MdScreenShare size={40}/></Icon>
-                </ManagementBar>
+                    <ManagementBar>
+                        <Icon style={{marginLeft: -8}}><MdMic size={40}/></Icon>
+                        <Icon><MdVideocam size={40}/></Icon>
+                        <Icon><MdLaptop size={40}/></Icon>
+                        <Icon><MdViewList size={40}/></Icon>
+                        <Icon><MdScreenShare size={40}/></Icon>
+                    </ManagementBar>
                 </>
             }
         </Container>
