@@ -1,19 +1,54 @@
 import React from 'react'
-import './styles.css'
+// import './styles.css'
 
-export default function UserBuble() {
+import styled from 'styled-components';
+
+const Container = styled.div`
+    display: flex;
+    align-items: center;
+    -webkit-align-items:center;
+    justify-content: space-between;
+    background: white;
+    width: 100%;
+    height: 90px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    margin-right: 10px;
+
+`;
+
+const ImageContainer = styled.div`
+    width: 75px;
+    /* height: 100%; */
+
+    display: flex;
+    align-items: center;
+    /* -webkit-align-items:center; */
+    justify-content: center;
+`;
+
+const Image = styled.img`
+    width: 60px;
+    height 60px;
+    border-radius: 50%;
+`;
+
+const TextFields = styled.div`
+    flex: 1;
+    padding: 10px 5px;
+`;
+
+export default function UserBuble({user, skill}) {
     return (
-        <>
-        <div className="user-div">
-            <div className="user-pic">
-                {/* <img></img> */}
-            </div>   
-
-            <div className="content-div">
-                <text className="user-name">Fulano da silva</text>
-                <text className="user-skill">UX Designer</text>
-            </div>
-        </div>
-        </>
+        <Container>
+            <ImageContainer>
+                <Image src="https://media-exp1.licdn.com/dms/image/C4E03AQF4vxK5m13VWg/profile-displayphoto-shrink_200_200/0?e=1593648000&v=beta&t=-uQlX4QmJ6FNqGOf1AeE6Xluaxh4-PEIV566IXVInPU"/>
+            </ImageContainer>
+            <TextFields>
+                <strong>{user}</strong>
+                <br/>
+                <text>{skill}</text>
+            </TextFields> 
+        </Container>
     );
 }

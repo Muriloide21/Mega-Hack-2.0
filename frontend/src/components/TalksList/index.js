@@ -13,7 +13,6 @@ const Container = styled.div`
     height: 100%;
     display: flex;
     flex-flow: column;
-    height: 100%;
 `;
 
 const EventContainer = styled.div`

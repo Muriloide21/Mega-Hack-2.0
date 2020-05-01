@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect, useRef } from 'react'
+import React, { useState, useRef } from 'react'
 
 import Tabs from '../Tabs/Tabs';
 import QuestionsContainer from '../../components/QuestionsContainer'
@@ -46,17 +46,24 @@ const TextArea = styled.textarea`
     font-size: 15px;
 `;
 
+const TitleBar = styled.div`
+    width: 100%; 
+    height: 45px;
+    background: white;
+    border-radius: 4px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+`;
+
 export default function InteractiveBar() {
     const [questions,setQuestions] = useState([]);
+    const [users,setUsers] = useState([]);
     const textRef = useRef();
+    const annotationsRef = useRef();
 
-    function sendQuestion(e){
-        // e.target.click();
-        var texto = document.getElementById('content').value;
-        setQuestions([... questions, {id: "1",user: "Athus", text: texto}])
-        console.log(questions)
-        document.getElementById('content').value = '';
-    }
     // const [users,setUsers] = useState([]);
 
     // useEffect(() => {
@@ -66,8 +73,8 @@ export default function InteractiveBar() {
 
     return (
         <Container>
-            <Tabs>
-                <div label={<FaListUl />}>
+            <Tabs defaultActiveTab='question-tab'>
+                <div id='question-tab' icon={<FaListUl />}>
                     <QuestionList>
                         {questions.map(question => (
                             <Question key={Math.random()} user={question.user} question_text={question.text}/>
@@ -79,45 +86,52 @@ export default function InteractiveBar() {
                         <MdSend 
                             size={25} 
                             style={{cursor: "pointer", width: 50, color: 'white'}} 
-                            onClick={() => {setQuestions(questions.concat({
+                            onClick={() => {
+                                setQuestions(questions.concat({
                                 user: 'Vinicius',
                                 text: textRef.current.value
-                            }))}}
+                                }))
+
+                                textRef.current.value = '';
+                                textRef.current.focus();
+                            }}
                         />
                     </MakeQuestion>
                 </div>
 
                 {/* Aba de Anotacoes */}
-                <div label={<FaStickyNote />} id="notes">
-                    <div className="title-div">
-                        <text>Anotações da Palestra 4</text>
-                    </div>
-                    <textarea className="notes-field" placeholder="Insira aqui suas anotações."/>
+                <div id='notes-tab' icon={<FaStickyNote />}>
+                    <TitleBar>
+                        <strong>Anotacões da palestra 4</strong>
+                    </TitleBar>
+                    <TextArea
+                        ref={annotationsRef}
+                        placeholder="Insira aqui suas anotações..."
+                        style={{marginTop: "8px"}}
+                    />
                 </div>
 
                 {/* Aba de Participantes da Palestra */}
-                <div label={<FaUserAlt />} id="users">
-                    <div className="title-div">
-                        <text>Lista de Participantes da Palestra 4</text>
-                    </div>
-                    <div className="generic-list-container">
-                        {/* <List itens={users} itensComponent={UserBuble}/> */}
-                        {/* <ul className="generic-list">
-                            <li><UserBuble/></li>
-                            <li><UserBuble/></li>
-                            <li><UserBuble/></li>
-                            <li><UserBuble/></li>
-                            <li><UserBuble/></li>
-                            <li><UserBuble/></li>
-                            <li><UserBuble/></li>
-                            <li><UserBuble/></li>
-                            <li><UserBuble/></li>
-                            <li><UserBuble/></li>
-                            <li><UserBuble/></li>
-                            <li><UserBuble/></li>
-                            <li><UserBuble/></li>
-                        </ul> */}
-                    </div>
+                <div id='users-tab' icon={<FaUserAlt />}>
+                    <TitleBar>
+                        <strong>Usuários da palestra 4</strong>
+                    </TitleBar>
+
+                    <QuestionList style={{marginTop: 12}}>
+                        {/* {users.map(user => (
+                            <UserBuble key={Math.random()} user={'Murilo'} skill={"Designer UX"}/>
+                        ))} */}
+                        <UserBuble key={Math.random()} user={'Athus'} skill={"Business"}/>
+                        <UserBuble key={Math.random()} user={'Athus'} skill={"Business"}/>
+                        <UserBuble key={Math.random()} user={'Athus'} skill={"Business"}/>
+                        <UserBuble key={Math.random()} user={'Athus'} skill={"Business"}/>
+                        <UserBuble key={Math.random()} user={'Athus'} skill={"Business"}/>
+                        <UserBuble key={Math.random()} user={'Athus'} skill={"Business"}/>
+                        <UserBuble key={Math.random()} user={'Athus'} skill={"Business"}/>
+                        <UserBuble key={Math.random()} user={'Athus'} skill={"Business"}/>
+                        <UserBuble key={Math.random()} user={'Athus'} skill={"Business"}/>
+                        <UserBuble key={Math.random()} user={'Athus'} skill={"Business"}/>
+                    </QuestionList>
                 </div>
             </Tabs>
         </Container>

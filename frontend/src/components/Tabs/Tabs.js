@@ -1,62 +1,53 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 
-import './styles.css';
+import styled from 'styled-components';
 import Tab from './Tab';
 
-class Tabs extends Component {
-  static propTypes = {
-    children: PropTypes.instanceOf(Array).isRequired,
-  }
+const TabContainer = styled.div`
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+`;
 
-  constructor(props) {
-    super(props);
+const TabHeader = styled.ol`
+    padding-left: 0;
+    margin: 0;
+    color: white;
+`;
 
-    this.state = {
-      activeTab: this.props.children[0].props.label,
-    };
-  }
+const TabContent = styled.div`
+    width: 100%;
+    height: 100%;
+    max-height: calc(100vh - 65px);
+    display: flex;
+    flex-flow: column;
 
-  onClickTabItem = (tab) => {
-    this.setState({ activeTab: tab });
-  }
+    background: #191919;
+    border-radius: 0 4px 4px 4px;
 
-  render() {
-    const {
-      onClickTabItem,
-      props: {
-        children,
-      },
-      state: {
-        activeTab,
-      }
-    } = this;
+    padding: 8px;
+`;
 
-    return (
-      <div className="tabs">
-        <ol className="tab-list">
-          {children.map((child) => {
-            const { label } = child.props;
+export default function Tabs({defaultActiveTab, children}) {
+  const [activeTab, setActiveTab] = useState(defaultActiveTab);
 
-            return (
-              <Tab
-                activeTab={activeTab}
-                key={label}
-                label={label}
-                onClick={onClickTabItem}
-              />
-            );
-          })}
-        </ol>
-        <div className="tab-content">
-          {children.map((child) => {
-            if (child.props.label !== activeTab) return undefined;
-            return child.props.children;
-          })}
-        </div>
-      </div>
-    );
-  }
+  return (
+    <TabContainer>
+      <TabHeader>
+        {children.map(({props}) => (
+            <Tab
+              active={activeTab === props.id}
+              id={props.id}
+              key={props.icon}
+              icon={props.icon}
+              handleClick={new_id => setActiveTab(new_id)}
+            />
+          ))}
+      </TabHeader>
+
+      <TabContent>
+        {children.find(({props}) => props.id === activeTab)?.props.children}
+      </TabContent>
+    </TabContainer>
+  );
 }
-
-export default Tabs;
