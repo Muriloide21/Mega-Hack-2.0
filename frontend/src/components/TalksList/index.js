@@ -2,14 +2,64 @@ import React from 'react'
 // import ReactDOM from 'react-dom';
 import MetisMenu from 'react-metismenu';
 import { MdHome, MdPermIdentity } from 'react-icons/md'
-import { AiTwotoneSetting } from 'react-icons/ai'
+import { BsMoon } from 'react-icons/bs'
 
-// import { faHome } from "@fortawesome/free-solid-svg-icons";
+import './react-metismenu-new.css';
 
+import styled from 'styled-components';
 
-import './styles.css'
-import './react-metismenu-standart.css'
+const Container = styled.div`
+    width: 15%;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+`;
 
+const EventContainer = styled.div`
+    background: #293C43;
+    height: 85px;
+    position: relative;
+    
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+`;
+
+const ButtonGroupContainer = styled.div`
+    height: 60px;
+    background: #446165;
+    padding: 0 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+
+    color: white;
+    font-weight: bold;
+`;
+
+const Icon = styled.div`
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #446165;
+    font-size: 20;
+`;
+
+const TextIconButton = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+`;
 
 const content = [
     {
@@ -55,21 +105,21 @@ const content = [
         ],
     },
     {
-        icon: 'spinner fa-spin',
+        icon: 'store',
         label: 'Exposições',
         content: [
             {
-                icon: 'icon-class-name',
+                icon: 'desktop',
                 label: 'Exposição 1',
                 //to: '#another-link',
             },
             {
-                icon: 'icon-class-name',
+                icon: 'desktop',
                 label: 'Exposição 2',
                 //to: '#another-link',
             },
             {
-                icon: 'icon-class-name',
+                icon: 'desktop',
                 label: 'Exposição 3',
                 //to: '#another-link',
             }
@@ -80,24 +130,34 @@ const content = [
 export default function TalksList() {
 
     return (
-        <>
-            <div className="outer-div">
-                <div className="event-name">Nome do evento</div>
-                <div className="container-home">
-                    <div className="home-icon"><MdHome/></div>
-                    <div className="home-text">Home</div>
-                </div> 
-                <MetisMenu content={content}/>
-                <div className="wheelfoot">
-                    <div className="wf-icon"><MdPermIdentity/></div>
-                    <div className="wf-text"><strong>Logout</strong></div>
-                    <div className="wf-settings">
-                        <div className="icon-set">
-                            <AiTwotoneSetting/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </>
+        <Container>
+                <EventContainer>
+                    <p style={{transform: "translate(0,120%)"}}>HackTalk 1.0</p>
+                </EventContainer>
+                    
+                <ButtonGroupContainer>
+                    <TextIconButton>
+                        <Icon style={{marginRight: 10}}>
+                            <MdHome size={23}/>
+                        </Icon>
+                        <p>Home</p>    
+                    </TextIconButton>
+                </ButtonGroupContainer>
+
+                <MetisMenu style={{}} content={content}/>
+
+                <ButtonGroupContainer style={{justifyContent: 'space-between'}}>
+                    <TextIconButton>
+                        <Icon style={{marginRight: 10}}>
+                            <MdPermIdentity size={23}/>
+                        </Icon>
+                        <p>Logout</p>
+                    </TextIconButton>
+
+                    <Icon>
+                        <BsMoon size={23}/>
+                    </Icon>
+                </ButtonGroupContainer>
+        </Container>
     );
 }

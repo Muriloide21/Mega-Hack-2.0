@@ -1,16 +1,21 @@
 import React from 'react';
-import { Row, Col } from 'react-bootstrap'
-// import socketio from 'socket.io-client';
-import 'bootstrap/dist/css/bootstrap.css';
-import './TalkView.css';
 
 import InteractiveBar from '../../components/InteractiveBar';
 import Stream from '../../components/Stream';
 import TalksList from '../../components/TalksList';
 
+import styled from 'styled-components';
+
+const Container = styled.div`
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+`;
 
 export default function TalkView(){
-    // const user_id = 145;
+    // Informações a serem recebidas do backend:
+    // Link do vídeo
+    // Room do socket
 
     // const socket = useMemo(() => socketio('http://localhost:3333', {
     //     query: { user_id },
@@ -24,19 +29,11 @@ export default function TalkView(){
     // }, [questions, socket]);
 
     return (
-        <>
-        <Row>
-            <Col md={2}>
-                <TalksList />
-            </Col>
-            <Col md={7}>
-                <Stream/>
-            </Col>
-            <Col md={3} >
-                <InteractiveBar/>
-            </Col>
-        </Row>
-        </>
+        <Container>
+            <TalksList />
+            <Stream />
+            <InteractiveBar />
+        </Container>
     );
 }
 
