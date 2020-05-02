@@ -5,7 +5,7 @@ import Tabs from '../Tabs/Tabs';
 import Question from '../../components/Question'
 import UserBuble from '../../components/UserBuble'
 
-import { FaCommentAlt, FaListUl, FaUserAlt, FaStickyNote } from "react-icons/fa";
+import { FaListUl, FaUserAlt, FaStickyNote } from "react-icons/fa";
 import { MdSend } from "react-icons/md";
 import { IoMdCopy } from "react-icons/io";
 import { FiDownload } from "react-icons/fi";
@@ -64,45 +64,74 @@ const ButtonGroup = styled.div`
     align-items: center;
 `;
 
-export default function InteractiveBar() {
-    const [questions,setQuestions] = useState([]);
-    const [users,setUsers] = useState([]);
+export default function InteractiveBar({ management, onScreen }) {
+    const [questions,setQuestions] = useState([
+        {user: 'Vinicius', text: 'Pergunta genérica aqui'},
+        {user: 'Athus', text: 'Pergunta genérica aqui'},
+        {user: 'Matheus', text: 'Pergunta genérica aqui'},
+    ]);
+    // const [users,setUsers] = useState([]);
     const textRef = useRef();
     const annotationsRef = useRef();
 
-    // const [users,setUsers] = useState([]);
-
-    // useEffect(() => {
-    //     setQuestions([... questions, {id: "1",user: "Athus", text: "Tudo bem?"}])
-    //     console.log(questions)
-    // }, []);
+    // (() => {
+    //     setInterval(() => {
+    //         const new_question = {id: questions.length, user: 'Arthur', text:'O que cê foi fazer no mato maria chiquinha?'};
+    //         setQuestions(questions.concat(new_question));
+    //         console.log(questions);
+    //     }, 10000);
+    // })();
 
     return (
         <Container>
             <Tabs defaultActiveTab='question-tab'>
                 <div id='question-tab' icon={<FaListUl />}>
                     <List>
-                        {questions.map(question => (
-                            <Question key={Math.random()} user={question.user} question_text={question.text}/>
-                        ))}
-                    </List>
-                    
-                    <MakeQuestion>
-                        <TextArea ref={textRef} placeholder="Insira sua pergunta aqui..."/>    
-                        <MdSend 
-                            size={25} 
-                            style={{cursor: "pointer", width: 50, color: 'white'}} 
-                            onClick={() => {
-                                setQuestions(questions.concat({
-                                user: 'Vinicius',
-                                text: textRef.current.value
-                                }))
+                        {questions.map((question,index) => {
 
-                                textRef.current.value = '';
-                                textRef.current.focus();
-                            }}
-                        />
-                    </MakeQuestion>
+                            const handleDelete = (question_index) => {
+                                setQuestions(questions.filter((_,i) => i !== question_index));
+                            }
+
+                            const selectQuestionOnScreen = (question_index) => {
+                                onScreen(question.user,question.text);
+                                handleDelete(question_index);
+                            }
+
+                            return (<Question 
+                                key={Math.random()} 
+                                user={question.user} 
+                                question_text={question.text}
+                                management={management} 
+                                handleSelect={() => selectQuestionOnScreen(index)}
+                                handleDelete={() => handleDelete(index)}/>
+                            )})}
+                    </List>
+
+                    {!management
+                    ? <>    
+                        <MakeQuestion>
+                            <TextArea ref={textRef} placeholder="Insira sua pergunta aqui..."/>    
+                            <MdSend 
+                                size={25} 
+                                style={{cursor: "pointer", width: 50, color: 'white'}} 
+                                onClick={() => {
+                                    if(textRef.current.value.length > 0) {
+                                        setQuestions(questions.concat({
+                                            user: 'Vinicius',
+                                            text: textRef.current.value
+                                        }))
+                                    }
+                                    textRef.current.value = '';
+                                    textRef.current.focus();
+                                }}
+                            />
+                        </MakeQuestion>
+                    </>
+                      
+                    : <>  
+                    </> 
+                    }
                 </div>
 
                 {/* Aba de Anotacoes */}
@@ -137,20 +166,7 @@ export default function InteractiveBar() {
                     </TitleBar>
 
                     <List style={{marginTop: 12}}>
-                        <UserBuble key={Math.random()} user={'Athus'} skill={"Business"}/>
-                        <UserBuble key={Math.random()} user={'Athus'} skill={"Business"}/>
-                        <UserBuble key={Math.random()} user={'Athus'} skill={"Business"}/>
-                        <UserBuble key={Math.random()} user={'Athus'} skill={"Business"}/>
-                        <UserBuble key={Math.random()} user={'Athus'} skill={"Business"}/>
-                        <UserBuble key={Math.random()} user={'Athus'} skill={"Business"}/>
-                        <UserBuble key={Math.random()} user={'Athus'} skill={"Business"}/>
-                        <UserBuble key={Math.random()} user={'Athus'} skill={"Business"}/>
-                        <UserBuble key={Math.random()} user={'Athus'} skill={"Business"}/>
-                        <UserBuble key={Math.random()} user={'Athus'} skill={"Business"}/>
-                        <UserBuble key={Math.random()} user={'Athus'} skill={"Business"}/>
-                        <UserBuble key={Math.random()} user={'Athus'} skill={"Business"}/>
-                        <UserBuble key={Math.random()} user={'Athus'} skill={"Business"}/>
-                        <UserBuble key={Math.random()} user={'Athus'} skill={"Business"}/>
+                        {Array(15).fill(<UserBuble key={Math.random()} user={'Athus'} skill={"Business"} management={management}/>)}
                     </List>
                 </div>
             </Tabs>

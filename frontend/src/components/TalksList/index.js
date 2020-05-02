@@ -1,9 +1,15 @@
-import React from 'react'
-import { useTheme } from '../../utils/ThemeContext'
-// import ReactDOM from 'react-dom';
+import React, { useState, useEffect } from 'react';
+import { useTheme } from '../../utils/ThemeContext';
+import { useHistory } from "react-router-dom";
+
 import MetisMenu from 'react-metismenu';
-import { MdHome, MdPermIdentity, MdWbSunny } from 'react-icons/md'
-import { BsMoon } from 'react-icons/bs'
+import { MdHome, MdPermIdentity, MdWbSunny } from 'react-icons/md';
+import { BsMoon } from 'react-icons/bs';
+
+import { makeStyles } from '@material-ui/core/styles';
+import Popover from '@material-ui/core/Popover';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 
 import './react-metismenu-new.css';
 
@@ -128,7 +134,13 @@ const content = [
 ];
 
 export default function TalksList() {
+    const history = useHistory();
     const { themeDark, setTheme } = useTheme();
+
+    const handleLogout = () => {
+        localStorage.removeItem("@Login");
+        history.push('/');
+    };    
 
     return (
         <Container>
@@ -137,7 +149,7 @@ export default function TalksList() {
                 </EventContainer>
                     
                 <ButtonGroupContainer>
-                    <TextIconButton>
+                    <TextIconButton onClick={() => history.push('/main')}>
                         <Icon style={{marginRight: 10}}>
                             <MdHome size={23}/>
                         </Icon>
@@ -145,10 +157,10 @@ export default function TalksList() {
                     </TextIconButton>
                 </ButtonGroupContainer>
 
-                <MetisMenu style={{}} content={content}/>
+                <MenuEventos/>
 
                 <ButtonGroupContainer style={{justifyContent: 'space-between'}}>
-                    <TextIconButton>
+                    <TextIconButton onClick={handleLogout}>
                         <Icon style={{marginRight: 10}}>
                             <MdPermIdentity size={23}/>
                         </Icon>
@@ -164,3 +176,63 @@ export default function TalksList() {
         </Container>
     );
 }
+
+const MenuEventos = () => {
+    const [visibleTab, setVisibleTab] = useState(null);
+    const [anchorEl, setAnchorEl] = useState(null);
+
+    const open = Boolean(anchorEl);
+    const id = open ? 'simple-popover' : undefined;
+
+    const handleClick = (event) => {
+        console.log(event);
+        
+        setAnchorEl(event.target);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    const setEventListeners = () => {
+        const menus = Array.from(document.querySelectorAll('ul.metismenu-container'));
+        menus.shift(); //retira o menu principal
+
+        const menuChildren = menus.map(menu => Array.from(menu.children)).flat();
+
+        menuChildren.forEach(child => {
+            child.addEventListener('mouseenter', handleClick);   
+            
+            child.addEventListener('mouseleave', handleClose);
+        })
+    }
+
+    useEffect(() => {
+        console.log(anchorEl);
+        if (!anchorEl) {
+            setEventListeners();
+        }
+    },[setEventListeners]);
+
+    return (
+        <>
+            <MetisMenu content={content}/>
+            <Popover
+                id={id}
+                open={open}
+                anchorEl={anchorEl}
+                onClose={handleClose}
+                anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'center',
+                }}
+                transformOrigin={{
+                vertical: 'top',
+                horizontal: 'center',
+                }}
+            >
+                <Typography>The content of the Popover.</Typography>
+            </Popover>
+        </>
+    );
+};

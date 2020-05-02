@@ -1,12 +1,14 @@
-import React from 'react';
+import React, {useState } from 'react';
 import { useTheme } from '../../utils/ThemeContext'
 
 import InteractiveBar from '../../components/InteractiveBar';
 import Stream from '../../components/Stream';
-import TalksList from '../../components/TalksList';
+import { useHistory } from "react-router-dom";
 
 import { MdHome, MdWbSunny } from 'react-icons/md'
 import { BsMoon } from 'react-icons/bs'
+
+import Question from '../../components/Question';
 
 import styled from 'styled-components';
 
@@ -25,10 +27,6 @@ const LeftBar = styled.div`
     justify-content:space-between;
 `;
 
-const IconDiv = styled.div`
-
-`;
-
 const Icon = styled.div`
     width: 40px;
     height: 40px;
@@ -43,13 +41,20 @@ const Icon = styled.div`
     font-size: 20;
 `;
 
-export default function TalkManage(){
+export default function TalkManage() {
+    const history = useHistory();
     const { themeDark, setTheme } = useTheme();
+    const [questionOnScreen, setQuestionOnScreen] = useState();
+    
+    function showOnScreen(user,text){
+        console.log('Vai mostrar!!');
+        setQuestionOnScreen(<Question user={user} question_text={text} management={false} view={true} />);
+    }
 
     return (
         <Container>
             <LeftBar >
-                <Icon style={{margin: 'auto', marginTop: 20}}>
+                <Icon style={{margin: 'auto', marginTop: 20}} onClick={() => history.push('/main')}>
                     <MdHome size={23}/>
                 </Icon>
 
@@ -60,10 +65,9 @@ export default function TalkManage(){
                 </Icon>
             </LeftBar>
 
-            <Stream management="true"/>
+            <Stream management="true" question={questionOnScreen} handleCloseQuestion={() => setQuestionOnScreen(null)}/>
 
-
-            <InteractiveBar />
+            <InteractiveBar management={true} onScreen={showOnScreen}/>
         </Container>
     );
 }

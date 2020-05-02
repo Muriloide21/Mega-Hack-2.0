@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaThumbsUp, FaThumbsDown } from 'react-icons/fa';
-
+import { MdQuestionAnswer } from 'react-icons/md';
+import { BsTrash } from 'react-icons/bs';
 // import './styles.css';
 
 import styled from 'styled-components';
@@ -26,6 +27,7 @@ const QuestionContainer = styled.div`
 
     display: flex;
     margin-right: 10px;
+    position: relative;
 `;
 
 const TextFields = styled.div`
@@ -49,11 +51,11 @@ const Button = styled.div`
 
     background: ${({color}) => color};
     border-radius: 4px;
-    color: white;
 
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 `;
 
 const ImageContainer = styled.div`
@@ -72,25 +74,82 @@ const Image = styled.img`
     border-radius: 50%;
 `;
 
-export default function Question({ user, question_text }) {
+const VotesCounter = styled.div`
+    position: absolute;
+    top: 2px;
+    right: 5px;
+    font-size: 15px;
+
+    display: flex;
+    align-items: center;
+`;
+
+export default function Question({ user, question_text, management, handleSelect, handleDelete, view }) {
+    const [upVotes,setUpVotes] = useState(0);
+    const [downVotes,setDownVotes] = useState(0);
+    const [lastVote, setLastVote] = useState(undefined);
+
+    //Evita múltiplos votos
+    const handleUpVote = () => {
+        if (lastVote !== 'up') {
+            setLastVote('up');
+            setUpVotes(upVotes+1);
+        }
+    }
+
+    const handleDownVote = () => {
+        if (lastVote !== 'down') {
+            setLastVote('down');
+            setDownVotes(downVotes+1);
+        }
+    }
+
     return (
-        <Container>    
+        <Container>
             <QuestionContainer>
                 <ImageContainer>
                     <Image src="https://media-exp1.licdn.com/dms/image/C4E03AQG5sBqLXqEasg/profile-displayphoto-shrink_200_200/0?e=1593648000&v=beta&t=VDwSJ8NWFhHmfDkni1SLDXRxup1vbTAlstuRzS1D1Sc"/>
                 </ImageContainer>
-                
+
                 <TextFields>
-                    <strong>Vinicius Lucas</strong>
+                    <strong>{user}</strong>
                     <br/>
                     <text>{question_text}</text>
-                </TextFields>   
-            </QuestionContainer>
-            
-            <FeedButtons>
-                <Button color='#28A745' size={40}><FaThumbsUp size={25}/></Button>
-                <Button color='#C61A1A' size={40}><FaThumbsDown size={25}/></Button>
-            </FeedButtons>
+                </TextFields> 
+
+                {(!view && management) &&
+                    <>
+                    <VotesCounter>
+                        <strong style={{color: '#28A745', marginRight: 5}}>{upVotes}</strong>
+                        <FaThumbsUp style={{color: '#28A745', marginRight: 10, marginBottom: 5}} size={15}/>
+                        
+                        <strong style={{color: '#C61A1A', marginRight: 5}}>{downVotes}</strong>
+                        <FaThumbsDown style={{color: '#C61A1A', marginTop: 1}} size={15}/>
+                    </VotesCounter>
+                    </>
+                }
+            </QuestionContainer> 
+
+            {!view &&
+                <FeedButtons>
+                    {!management
+                    ?<>
+                        <Button color='#28A745' size={40} onClick={handleUpVote}>
+                            <FaThumbsUp color={lastVote === 'up' ? 'white' : '#333333'} size={25}/>
+                        </Button>
+                        <Button color='#C61A1A' size={40} onClick={handleDownVote}>
+                            <FaThumbsDown color={lastVote === 'down' ? 'white': '#333333'} size={25}/>
+                        </Button>
+                    </>:<>
+                        <Button color='#28A745' size={40} onClick={handleSelect}>
+                            <MdQuestionAnswer color='white' size={25}/>
+                        </Button>
+                        <Button color='#C61A1A' size={40} onClick={handleDelete}>
+                            <BsTrash size={25}/>
+                        </Button>
+                    </>}
+                </FeedButtons>
+            }
         </Container>
     );
 }
