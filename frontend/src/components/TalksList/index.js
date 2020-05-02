@@ -204,11 +204,11 @@ const MenuEventos = () => {
         menus.shift(); //retira o menu principal
 
         const menuChildren = menus.map(menu => Array.from(menu.children)).flat();
-        menuChildren.forEach(child => {
-            child.addEventListener('mouseenter', handleClick);   
+        // menuChildren.forEach(child => {
+        //     child.addEventListener('mouseenter', handleClick);   
             
-            child.addEventListener('mouseleave', handleClose);
-        });
+        //     child.addEventListener('mouseleave', handleClose);
+        // });
     }
 
     useEffect(() => {
