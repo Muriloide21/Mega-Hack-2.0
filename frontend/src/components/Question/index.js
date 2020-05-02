@@ -18,6 +18,7 @@ const Container = styled.div`
 
 const QuestionContainer = styled.div`
     height: 100%;
+    width: 100%;
     min-height: 90px;
 
     background: white;
@@ -30,6 +31,8 @@ const QuestionContainer = styled.div`
 const TextFields = styled.div`
     flex: 1;
     padding: 10px 5px;
+    word-break: break-all;
+    overflow-y: auto;
 `;
 
 const FeedButtons = styled.div`
@@ -80,7 +83,7 @@ export default function Question({ user, question_text }) {
                 <TextFields>
                     <strong>Vinicius Lucas</strong>
                     <br/>
-                    <text>Como pode um peixe vivo viver fora da água fria?</text>
+                    <text>{question_text}</text>
                 </TextFields>   
             </QuestionContainer>
             
@@ -91,27 +94,3 @@ export default function Question({ user, question_text }) {
         </Container>
     );
 }
-
-{/* <Row style={{"marginBottom": "10px", "maxHeight": "80px"}}>
-            <Col md={10}  style={{"marginTop": "2%"}}>
-                <div className="question">
-                    <Row>
-                        <Col md={2}>
-                            <div className="avatar-pic"></div>
-                        </Col>
-                        <Col className="question-content" md={10} style={{"overflowY": "auto", "maxHeight": "70px"}}>
-                            <Row>
-                                <span><strong>{user}</strong></span>
-                            </Row>
-                            <Row>
-                                <span>{question_text}</span>
-                            </Row>
-                        </Col>
-                    </Row>
-                </div>
-            </Col>
-            <Col md={2} style={{"marginTop": "2%"}}>
-                <Button variant="success"> <FaThumbsUp style={{"display":"flex"}}> </FaThumbsUp> </Button>
-                <Button variant="danger"> <FaThumbsDown style={{"display":"flex"}}> </FaThumbsDown> </Button>
-            </Col>
-        </Row> */}

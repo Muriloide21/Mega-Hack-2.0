@@ -11,6 +11,7 @@ export default function Routes(){
         <BrowserRouter>
             <Switch>
                 <Route path="/" exact component={Login} />
+                <Route path="/login" exact component={Login} />
                 <Route path="/talkview" exact component={UserTalkView} />
                 <Route path="/talkmanage" exact component={SpeakerTalkManage} />
                 <Route path="/main" exact component={Main} />

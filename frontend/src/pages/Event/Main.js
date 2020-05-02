@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { useTheme } from '../../utils/ThemeContext'
 
 import InteractiveBar from '../../components/InteractiveBar';
 import Stream from '../../components/Stream';
@@ -67,10 +68,12 @@ class Image extends Component{
 }
 
 export default function Main(){
+    const { themeDark, setTheme } = useTheme();
+
     return (
         <Container>
             <TalksList />
-            <Content darkMode="true" >
+            <Content darkMode={themeDark} >
                 <VideoContainer>
                     <text> Acontendo agora </text>
                     <VideoList>

@@ -70,7 +70,6 @@ const Icon = styled.div`
 
 export default function Stream({ management }) {
     const {themeDark} = useTheme();
-    console.log(themeDark);
 
     return (
         <Container darkMode={themeDark}>
