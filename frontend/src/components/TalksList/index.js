@@ -1,7 +1,8 @@
 import React from 'react'
+import { useTheme } from '../../utils/ThemeContext'
 // import ReactDOM from 'react-dom';
 import MetisMenu from 'react-metismenu';
-import { MdHome, MdPermIdentity } from 'react-icons/md'
+import { MdHome, MdPermIdentity, MdWbSunny } from 'react-icons/md'
 import { BsMoon } from 'react-icons/bs'
 
 import './react-metismenu-new.css';
@@ -127,6 +128,7 @@ const content = [
 ];
 
 export default function TalksList() {
+    const { themeDark, setTheme } = useTheme();
 
     return (
         <Container>
@@ -153,8 +155,10 @@ export default function TalksList() {
                         <p>Logout</p>
                     </TextIconButton>
 
-                    <Icon>
-                        <BsMoon size={23}/>
+                    <Icon onClick={() => setTheme(!themeDark)}>
+                        {themeDark 
+                        ? <MdWbSunny size={21}/>
+                        : <BsMoon size={23}/>}
                     </Icon>
                 </ButtonGroupContainer>
         </Container>

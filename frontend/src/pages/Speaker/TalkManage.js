@@ -1,10 +1,12 @@
 import React from 'react';
+import { useTheme } from '../../utils/ThemeContext'
 
 import InteractiveBar from '../../components/InteractiveBar';
 import Stream from '../../components/Stream';
 import TalksList from '../../components/TalksList';
 
 import { MdHome, MdWbSunny } from 'react-icons/md'
+import { BsMoon } from 'react-icons/bs'
 
 import styled from 'styled-components';
 
@@ -42,6 +44,8 @@ const Icon = styled.div`
 `;
 
 export default function TalkManage(){
+    const { themeDark, setTheme } = useTheme();
+
     return (
         <Container>
             <LeftBar >
@@ -49,8 +53,10 @@ export default function TalkManage(){
                     <MdHome size={23}/>
                 </Icon>
 
-                <Icon style={{margin: "auto", marginBottom: 20, backgroundColor: '#446165', border: "2px solid #ffffff", color: 'white'}}>
-                    <MdWbSunny size={23}/>
+                <Icon style={{margin: "auto", marginBottom: 20, backgroundColor: '#446165', border: "2px solid #ffffff", color: 'white'}} onClick={() => setTheme(!themeDark)}>
+                        {themeDark 
+                        ? <MdWbSunny size={21}/>
+                        : <BsMoon size={23}/>}
                 </Icon>
             </LeftBar>
 

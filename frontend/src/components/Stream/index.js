@@ -1,8 +1,7 @@
 import React from 'react'
+import { useTheme } from '../../utils/ThemeContext'
 
 import { MdMic, MdMicOff, MdVideocam, MdVideocamOff, MdLaptop, MdViewList, MdScreenShare, MdStopScreenShare } from "react-icons/md";
-
-// import './styles.css'
 
 import styled from 'styled-components';
 
@@ -32,20 +31,27 @@ const VideoInfo = styled.div`
     font-weight: bold;
 `;
 
+const ManagementBarContainer = styled.div`
+    width: 84%;
+    position: absolute;
+    bottom: 0px;  
+    
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+`;
+
 const ManagementBar = styled.div`
+    height: 50px;
+    width: 50%;
+    min-width: 300px;
+  
     background: #191919;
     border-radius: 16px 16px 0px 0px;
-    height: 50px;
-    min-width: 240px;
-    width: 28%;
-    position: fixed;
-    display: flex;
-    align-itens: center;
-    justify-content: space-between;
-    bottom: 0;
-    // left:100%;
-    transform: translate(50%);
-    padding: 10px 18px 0px 18px; 
+    padding: 10px 18px 0px 18px;
+  
+    display: -webkit-flex;
+    -webkit-justify-content: space-between;
 `;
 
 const Icon = styled.div`
@@ -63,11 +69,12 @@ const Icon = styled.div`
 `;
 
 export default function Stream({ management }) {
-    const darkMode = true;
+    const {themeDark} = useTheme();
+    console.log(themeDark);
 
     return (
-        <Container darkMode={darkMode}>
-            <Text darkMode={darkMode} style={{fontSize: '3rem', fontWeight:'bold', marginBottom: 10}}>
+        <Container darkMode={themeDark}>
+            <Text darkMode={themeDark} style={{fontSize: '3rem', fontWeight:'bold', marginBottom: 10}}>
                 Título do Vídeo
             </Text>
             
@@ -76,16 +83,16 @@ export default function Stream({ management }) {
             {!management ? 
                 <>
                 <VideoInfo>
-                    <Text darkMode={darkMode}>Instrutor fulano</Text>
-                    <Text darkMode={darkMode}>47/50 participantes</Text>
+                    <Text darkMode={themeDark}>Instrutor fulano</Text>
+                    <Text darkMode={themeDark}>47/50 participantes</Text>
                 </VideoInfo>
                 
-                <Text darkMode={darkMode} style={{clear:"both", textAlign: "justify"}}>
+                <Text darkMode={themeDark} style={{clear:"both", textAlign: "justify"}}>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lectus amet, aliquam pellentesque enim. In euismod tincidunt purus condimentum et platea arcu facilisis. Tincidunt massa enim, porttitor praesent mi blandit eget. Vel urna leo odio metus dis tortor tortor nibh. Nunc rhoncus lectus feugiat consequat purus sed risus aliquam. Non egestas molestie urna tristique.
                 </Text>
                 </>
             : 
-                <>
+                <ManagementBarContainer>
                     <ManagementBar>
                         <Icon style={{marginLeft: -8}}><MdMic size={40}/></Icon>
                         <Icon><MdVideocam size={40}/></Icon>
@@ -93,7 +100,7 @@ export default function Stream({ management }) {
                         <Icon><MdViewList size={40}/></Icon>
                         <Icon><MdScreenShare size={40}/></Icon>
                     </ManagementBar>
-                </>
+                </ManagementBarContainer>
             }
         </Container>
     );
