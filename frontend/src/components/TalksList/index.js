@@ -140,7 +140,7 @@ export default function TalksList() {
     const handleLogout = () => {
         localStorage.removeItem("@Login");
         history.push('/');
-    };    
+    }; 
 
     return (
         <Container>
@@ -178,16 +178,21 @@ export default function TalksList() {
 }
 
 const MenuEventos = () => {
-    const [visibleTab, setVisibleTab] = useState(null);
+    const [open, setOpen] = useState(false);
     const [anchorEl, setAnchorEl] = useState(null);
+    const [isListenning, setIsListenning] = useState(false);
 
-    const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
+    var teste = null;
 
     const handleClick = (event) => {
         console.log(event);
-        
-        setAnchorEl(event.target);
+        if((event.currentTarget !== teste) && (event.currentTarget !== null)){
+            console.log(event.currentTarget);
+            setAnchorEl(event.currentTarget);  
+            teste = event.currentTarget;
+            setOpen(true);
+        }
     };
 
     const handleClose = () => {
@@ -199,20 +204,20 @@ const MenuEventos = () => {
         menus.shift(); //retira o menu principal
 
         const menuChildren = menus.map(menu => Array.from(menu.children)).flat();
-
         menuChildren.forEach(child => {
             child.addEventListener('mouseenter', handleClick);   
             
             child.addEventListener('mouseleave', handleClose);
-        })
+        });
     }
 
     useEffect(() => {
-        console.log(anchorEl);
-        if (!anchorEl) {
+        console.log(isListenning);
+        if (!isListenning) {
             setEventListeners();
+            setIsListenning(true);
         }
-    },[setEventListeners]);
+    },[]);
 
     return (
         <>
