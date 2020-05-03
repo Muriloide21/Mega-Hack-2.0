@@ -26,8 +26,17 @@ io.on('connection', socket => {
     var usersDict = {};
     Rooms[room] == undefined ? usersDict = {} : usersDict = Rooms[room];
     usersDict[user_id] = socket.id;
-
     connectedUsers[user_id] = room;
+    console.log(user_id+" Entrou na sala "+ room);
+
+
+    socket.on('voteQuestion', data => {
+        io.to(room).emit('some event');
+    })
+
+    // io.to('some room').emit('some event');
+
+
 
 
     socket.on('disconnect', function(){
@@ -37,9 +46,6 @@ io.on('connection', socket => {
         
         // io.to('some room').emit('some event');
     });
-
-    // io.to('some room').emit('some event');
-    console.log(user_id+" Entrou na sala "+ room);
 });
 
 app.use((req, res, next) => {

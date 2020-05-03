@@ -1,10 +1,17 @@
 import React, { createContext, useState, useContext } from 'react';
 
-const ThemeContext = createContext(false);
+const ConnectionProvider = createContext(false);
 
-export default function ThemeProvider({children}) {
-    const getThemeFromLocalStorage = () => JSON.parse(localStorage.getItem("@DarkMode"));
-    const [darkMode, setDarkMode] = useState(getThemeFromLocalStorage() ?? false);
+export default function ConnectionProvider({children}) {
+    const getConnectionFromLocalStorage = () => JSON.parse(localStorage.getItem("@Connection"));
+    const [socket, setSocket] = useState(getThemeFromLocalStorage() ?? false);
+
+
+    // const socket = useMemo(() => socketio('http://localhost:3333', {
+    //     query: { user_id: email, room: 'BillGatesTalk' },
+    // }), [email, password]);
+
+
 
     const changeTheme = theme => {
         localStorage.setItem("@DarkMode", JSON.stringify(theme));
