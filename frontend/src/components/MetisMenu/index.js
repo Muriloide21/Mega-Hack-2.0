@@ -10,17 +10,18 @@ import styled from 'styled-components';
 
 import './react-metismenu-new.css';
 
-const pop = (
+const pop = ({ title, speaker, description, n, m }) => {
+    return (
     <Athus id="popover-basic">
-        <Athus.Title as="h3">Teste</Athus.Title>
+        <Athus.Title as="h3">{title}</Athus.Title>
             <Athus.Content>
-                <strong>Responsável:</strong> Athus Cavalini<br />
-                <strong>Participantes:</strong> 12/45<br />
+                <strong>Responsável:</strong> {speaker}<br />
+                <strong>Participantes:</strong> {n}/{m}<br />
                 <strong>Descrição:</strong><br />
-                Tralalalala
+                {description}
             </Athus.Content>
     </Athus>
-);
+)};
 
 const MetisMenuContainer = styled.ul`
     height: inherit;
@@ -29,20 +30,20 @@ const MetisMenuContainer = styled.ul`
 
 const Icon = styled.div`
     /* pointer-events: none; */
-
+    transition: transform 300ms;
+    -webkit-transition: transform 300ms;
     position: absolute;
     right: 21px;
     top: 20px;
 `;
 
-const MetisMenuItem = ({ icon, label, to='' }) => {
+const MetisMenuItem = ({ icon, label, to='', title, speaker, description, n, m }) => {
     return (
         <>
-        <OverlayTrigger trigger="click" placement="right" overlay={pop}>
-            <li style={{width: '100%'}}className="metismenu-item">
-                <p className="metismenu-link">
-                    {icon}
-                    {label}
+        <OverlayTrigger trigger="hover" placement="right" overlay={pop({title, speaker, description, n, m})}>
+            <li style={{width: '100%'}} className="metismenu-item2" onClick={() => console.log("alo")}>
+                <p className="metismenu-link2">
+                    {icon}&nbsp;&emsp;{label}
                 </p>
             </li>
         </OverlayTrigger>
@@ -55,25 +56,34 @@ const MetisMenuItem = ({ icon, label, to='' }) => {
 };
 
 const MetisMenuSection = ({ active, icon, label, to='', content, ...props }) => {
-    const [ulClasses, setUlClasses] = useState(`metismenu-container ${active ? 'visible': ''}`);
+
+    const [ulClasses, setUlClasses] = useState(undefined);
 
     return (
         <li className="metismenu-item" style={{position: 'relative'}} {...props}>
-            <p className="metismenu-link">{icon}{label}</p>
+            <p className="metismenu-link">{icon}&nbsp;&emsp;{label}</p>
             <Icon>{active ? <FaCaretDown/> : <FaCaretLeft/>}</Icon>
 
             {active && 
             <ul className={ulClasses}>
                 {content.map((item) => {
                     return (
-                    <Popover action="hover" placement="right-center">
+                        <>
+                    {/* //<Popover action="hover" placement="right-center"> */}
                         <MetisMenuItem 
                             icon={item.icon} 
                             label={item.label} 
                             to={item.to}
-                        />
-                        <div style={{background: 'white', width: 100, height: 100}}></div>
-                    </Popover>);
+                            title={item.title} 
+                            speaker={item.speaker}
+                            description={item.description}
+                            n={item.n}
+                            m={item.m}/>
+                        {/* <div style={{background: 'white', width: 100, height: 100}}>
+                        </div> */}
+                    {/* </Popover> */}
+                    </>
+                    );
                 })}
             </ul>
             }
@@ -82,6 +92,7 @@ const MetisMenuSection = ({ active, icon, label, to='', content, ...props }) => 
 };
 
 export default function MetisMenu({ content }) {
+
     const [ativeSection, setActiveSection] = useState(undefined);
 
     const handleClick = (index) => {

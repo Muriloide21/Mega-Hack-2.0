@@ -40,6 +40,16 @@
     margin: 0;
     padding: 0;
   }
+  .metismenu-item2 {
+    color: #FFF !important;
+    background: #ECECEC;
+    margin: 0;
+    padding: 0;
+  }
+  .metismenu-item2:hover {
+    color: #000 !important;
+    background: #FFF;
+  }
   .metismenu-container {
     list-style: none;
   }
@@ -82,17 +92,36 @@
   .metismenu-link {
     padding-top: 0.5em;
     padding-bottom: 0.5em;
+    padding-left: 1em;
     color: #FFF;
     transition: height 300ms, color 300ms, background-color 300ms;
     -webkit-transition: height 300ms, color 300ms, background-color 300ms;
     display: block;
     line-height: 2.5em;
     text-decoration: none;
+    cursor: pointer;
+  }
+  .metismenu-link2 {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    color: #000;
+    transition: height 300ms, color 300ms, background-color 300ms;
+    -webkit-transition: height 300ms, color 300ms, background-color 300ms;
+    display: block;
+    line-height: 2.5em;
+    text-decoration: none;
+    padding-left: 2em;
+    cursor: pointer;
   }
   .metismenu-link:hover {
     background: #000;
     color: #f7f7f7;
   }
+  .metismenu-link2:hover {
+    background: #FFF;
+    color: #000;
+  }
+
   .metismenu-link.active {
     background: white;
     color: black;
