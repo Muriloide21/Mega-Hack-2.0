@@ -1,16 +1,18 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { saveAs } from 'file-saver';
 
 import Tabs from '../Tabs/Tabs';
 import Question from '../../components/Question'
 import UserBuble from '../../components/UserBuble'
 
+import { UserService } from '../../utils/UserService';
 import { FaListUl, FaUserAlt, FaStickyNote } from "react-icons/fa";
 import { MdSend } from "react-icons/md";
 import { IoMdCopy } from "react-icons/io";
 import { FiDownload } from "react-icons/fi";
 
 import styled from 'styled-components';
+import QuestionsTab from './QuestionsTab';
 
 const Container = styled.div`
     width: 25%;
@@ -64,74 +66,27 @@ const ButtonGroup = styled.div`
     align-items: center;
 `;
 
-export default function InteractiveBar({ management, onScreen }) {
-    const [questions,setQuestions] = useState([
+export default function InteractiveBar({ management, onScreen, socket }) {
+    const [questions, setQuestions] = useState([
         {user: 'Vinicius', text: 'Pergunta genérica aqui'},
         {user: 'Athus', text: 'Pergunta genérica aqui'},
         {user: 'Matheus', text: 'Pergunta genérica aqui'},
     ]);
-    // const [users,setUsers] = useState([]);
+    console.log('carregou interactiveBar')
+
+    const email = UserService.getEmail();
     const textRef = useRef();
     const annotationsRef = useRef();
 
-    // (() => {
-    //     setInterval(() => {
-    //         const new_question = {id: questions.length, user: 'Arthur', text:'O que cê foi fazer no mato maria chiquinha?'};
-    //         setQuestions(questions.concat(new_question));
-    //         console.log(questions);
-    //     }, 10000);
-    // })();
+    function newMessage(question){
+        setQuestions([...questions, question])
+    }
 
     return (
         <Container>
             <Tabs defaultActiveTab='question-tab'>
                 <div id='question-tab' icon={<FaListUl />}>
-                    <List>
-                        {questions.map((question,index) => {
-
-                            const handleDelete = (question_index) => {
-                                setQuestions(questions.filter((_,i) => i !== question_index));
-                            }
-
-                            const selectQuestionOnScreen = (question_index) => {
-                                onScreen(question.user,question.text);
-                                handleDelete(question_index);
-                            }
-
-                            return (<Question 
-                                key={Math.random()} 
-                                user={question.user} 
-                                question_text={question.text}
-                                management={management} 
-                                handleSelect={() => selectQuestionOnScreen(index)}
-                                handleDelete={() => handleDelete(index)}/>
-                            )})}
-                    </List>
-
-                    {!management
-                    ? <>    
-                        <MakeQuestion>
-                            <TextArea ref={textRef} placeholder="Insira sua pergunta aqui..."/>    
-                            <MdSend 
-                                size={25} 
-                                style={{cursor: "pointer", width: 50, color: 'white'}} 
-                                onClick={() => {
-                                    if(textRef.current.value.length > 0) {
-                                        setQuestions(questions.concat({
-                                            user: 'Vinicius',
-                                            text: textRef.current.value
-                                        }))
-                                    }
-                                    textRef.current.value = '';
-                                    textRef.current.focus();
-                                }}
-                            />
-                        </MakeQuestion>
-                    </>
-                      
-                    : <>  
-                    </> 
-                    }
+                    <QuestionsTab socket={socket} onScreen={onScreen} management={management}/>
                 </div>
 
                 {/* Aba de Anotacoes */}

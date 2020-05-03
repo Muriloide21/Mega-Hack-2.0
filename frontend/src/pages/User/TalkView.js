@@ -1,11 +1,13 @@
-import React, { useMemo } from 'react';
+import React, { useState } from 'react';
 import socketio from 'socket.io-client';
 
+import { UserService } from '../../utils/UserService';
 import InteractiveBar from '../../components/InteractiveBar';
 import Stream from '../../components/Stream';
 import TalksList from '../../components/TalksList';
 
 import styled from 'styled-components';
+import { useEffect } from 'react';
 
 const Container = styled.div`
     height: 100vh;
@@ -13,29 +15,25 @@ const Container = styled.div`
     display: flex;
 `;
 
-export default function TalkView(){
-    const {email, password} = JSON.parse(localStorage.getItem("@Login"))
+export default function TalkView() {
+    const email = UserService.getEmail();
+    const [socket, setSocket] = useState();
 
-    // Informações a serem recebidas do backend:
-    // Link do vídeo(dados da palestra)
-    // Room do socket
-    const socket = useMemo(() => socketio('http://localhost:3333', {
-        query: { user_id: email, room: 'BillGatesTalk' },
-    }), [email, password]);
-   
-    // useEffect(() => {
-    //     socket.on('NewQuestion', data => {
-    //         console.log(questions, data)
-    //         setQuestions([... questions, data]);
-    //     })
-    // }, [questions, socket]);
+    console.log('carregou Talkview')
+
+    useEffect(() => {
+        setSocket(socketio('http://localhost:3333', {
+            query: { user_id: email, room: 'Talk4' }
+        }))
+    }, []);
 
     return (
         <Container>
             <TalksList />
             <Stream />
-            <InteractiveBar />
+            <InteractiveBar socket={socket} />
         </Container>
     );
+        
 }
 

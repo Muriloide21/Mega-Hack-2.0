@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import Webcam from "react-webcam";
 import { useTheme } from '../../utils/ThemeContext'
+import CanvasDraw from "react-canvas-draw";
 
 import { MdMic, MdMicOff, MdVideocam, MdVideocamOff, MdLaptop, MdCancel, MdViewList, MdScreenShare, MdStopScreenShare,  } from "react-icons/md";
 import { IoMdClose } from 'react-icons/io';
@@ -41,6 +42,7 @@ const ManagementBarContainer = styled.div`
     display: flex;
     align-items: flex-start;
     justify-content: center;
+    z-index: 50;
 `;
 
 const ManagementBar = styled.div`
@@ -91,6 +93,14 @@ const QuestionContainer = styled.div`
     padding-bottom: 15px;
 `;
 
+const CanvasContainer = styled.div`
+    width: calc(100% - 10px);
+    position: absolute;
+    top: 0;
+    border: 4px solid;
+    z-index: 10;
+`;
+
 const StreamDiv = styled.div`
     position: relative;
     width: 100%;
@@ -126,8 +136,14 @@ export default function Stream({ management, question, handleCloseQuestion }) {
             </>
             : <>
                 <StreamDiv>
-                    <Webcam audio={false} screenshotFormat="image/jpeg" width={'100%'} mirrored={true}/>
-                    
+                    {(cam) ?
+                        <Webcam audio={false} screenshotFormat="image/jpeg" width={'100%'} mirrored={true} style={{zIndex: 40}}/>
+                        :
+                        <CanvasContainer>
+                            <CanvasDraw brushColor="#444" hideGrid hideInterface canvasWidth={'100%'} canvasHeight={500} brushRadius={2} lazyRadius={2}/>
+                            <Webcam audio={false} screenshotFormat="image/jpeg" width={'200'} mirrored={true} style={{zIndex: 30, position: "absolute", top: 0}}/>
+                        </CanvasContainer>
+                    }
                     <QuestionContainer>
                         {question && 
                         <>

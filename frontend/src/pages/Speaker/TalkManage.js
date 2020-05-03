@@ -1,4 +1,6 @@
-import React, {useState } from 'react';
+import React, {useState, useEffect } from 'react';
+import socketio from 'socket.io-client';
+
 import { useTheme } from '../../utils/ThemeContext'
 
 import InteractiveBar from '../../components/InteractiveBar';
@@ -45,6 +47,13 @@ export default function TalkManage() {
     const history = useHistory();
     const { themeDark, setTheme } = useTheme();
     const [questionOnScreen, setQuestionOnScreen] = useState();
+    const [socket, setSocket] = useState();
+
+    useEffect(() => {
+        setSocket(socketio('http://localhost:3333', {
+            query: { user_id: null, room: 'Talk4' }
+        }))
+    }, []);
     
     function showOnScreen(user,text){
         console.log('Vai mostrar!!');
@@ -67,7 +76,7 @@ export default function TalkManage() {
 
             <Stream management="true" question={questionOnScreen} handleCloseQuestion={() => setQuestionOnScreen(null)}/>
 
-            <InteractiveBar management={true} onScreen={showOnScreen}/>
+            <InteractiveBar management={true} onScreen={showOnScreen} socket={socket}/>
         </Container>
     );
 }

@@ -2,18 +2,43 @@ import React, { useState, useEffect } from 'react';
 import { useTheme } from '../../utils/ThemeContext';
 import { useHistory } from "react-router-dom";
 
-import MetisMenu from 'react-metismenu';
+import MetisMenu from '../MetisMenu';
+
 import { MdHome, MdPermIdentity, MdWbSunny } from 'react-icons/md';
 import { BsMoon } from 'react-icons/bs';
+import { AiOutlineFundProjectionScreen } from 'react-icons/ai';
+import { FaComments, FaStore, FaDesktop, FaLock } from 'react-icons/fa';
+
+import Popover from 'react-bootstrap/Popover';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+
+
+import tooltip from 'react-bootstrap/tooltip';
 
 import { makeStyles } from '@material-ui/core/styles';
-import Popover from '@material-ui/core/Popover';
+// import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import { UserService } from '../../utils/UserService';
 
-import './react-metismenu-new.css';
+// import './react-metismenu-new.css';
+
+import './styles.css';
 
 import styled from 'styled-components';
+
+const pop = (
+    <Popover id="popover-basic">
+      <Popover.Title as="h3">Teste</Popover.Title>
+            <Popover.Content>
+                <strong>Responsável:</strong> Athus Cavalini<br />
+                <strong>Participantes:</strong> 12/45<br />
+                <strong>Descrição:</strong><br />
+                Tralalalala
+            </Popover.Content>
+    </Popover>
+);
+
 
 const Container = styled.div`
     width: 15%;
@@ -69,63 +94,63 @@ const TextIconButton = styled.div`
 
 const content = [
     {
-        icon: 'presentation',
+        icon: <AiOutlineFundProjectionScreen/>,
         label: 'Minicursos',
         content: [
             {
-                icon: 'desktop',
+                icon: <FaDesktop/>,
                 label: 'Minicurso 1',
                 //to: '#another-link',
             },
             {
-                icon: 'desktop',
+                icon: <FaDesktop/>,
                 label: 'Minicurso 2',
                 //to: '#another-link',
             },
             {
-                icon: 'lock',
+                icon: <FaLock/>,
                 label: 'Minicurso 3',
                 //to: '#another-link',
             }
         ],
     },
     {
-        icon: 'comments',
+        icon: <FaComments/>,
         label: 'Palestras',
         content: [
             {
-                icon: 'desktop',
+                icon: <FaDesktop/>,
                 label: 'Palestra 1',
                 //to: '#another-link',
             },
             {
-                icon: 'lock',
+                icon: <FaLock/>,
                 label: 'Palestra 2',
                 //to: '#another-link',
             },
             {
-                icon: 'desktop',
+                icon: <FaDesktop/>,
                 label: 'Palestra 3',
                 //to: '#another-link',
             }
         ],
     },
     {
-        icon: 'store',
+        icon: <FaStore/>,
         label: 'Exposições',
         content: [
             {
-                icon: 'desktop',
+                icon: <FaDesktop/>,
                 label: 'Exposição 1',
                 //to: '#another-link',
             },
             {
-                icon: 'desktop',
+                icon: <FaDesktop/>,
                 label: 'Exposição 2',
                 //to: '#another-link',
             },
             {
-                icon: 'desktop',
+                icon: <FaDesktop/>,
                 label: 'Exposição 3',
                 //to: '#another-link',
             }
@@ -138,7 +163,7 @@ export default function TalksList() {
     const { themeDark, setTheme } = useTheme();
 
     const handleLogout = () => {
-        localStorage.removeItem("@Login");
+        UserService.doLogout();
         history.push('/');
     }; 
 
@@ -148,16 +173,16 @@ export default function TalksList() {
                     <p style={{transform: "translate(0,120%)"}}>HackTalk 1.0</p>
                 </EventContainer>
                     
-                <ButtonGroupContainer>
-                    <TextIconButton onClick={() => history.push('/main')}>
-                        <Icon style={{marginRight: 10}}>
-                            <MdHome size={23}/>
-                        </Icon>
-                        <p>Home</p>    
-                    </TextIconButton>
-                </ButtonGroupContainer>
+                    <ButtonGroupContainer>
+                        <TextIconButton onClick={() => history.push('/main')}>
+                            <Icon style={{marginRight: 10}}>
+                                <MdHome size={23}/>
+                            </Icon>
+                            <p>Home</p>
+                        </TextIconButton>
+                    </ButtonGroupContainer>
 
-                <MenuEventos/>
+                <MetisMenu content={content}/>
 
                 <ButtonGroupContainer style={{justifyContent: 'space-between'}}>
                     <TextIconButton onClick={handleLogout}>
@@ -168,7 +193,7 @@ export default function TalksList() {
                     </TextIconButton>
 
                     <Icon onClick={() => setTheme(!themeDark)}>
-                        {themeDark 
+                        {themeDark
                         ? <MdWbSunny size={21}/>
                         : <BsMoon size={23}/>}
                     </Icon>
@@ -176,6 +201,25 @@ export default function TalksList() {
         </Container>
     );
 }
+
+// const MenuEventos = () => {
+//     const pop = (
+//         <Popover id="popover-basic">
+//           <Popover.Title as="h3">Teste</Popover.Title>
+//           <Popover.Content>
+//             Texto teste.
+//           </Popover.Content>
+//         </Popover>
+//       );
+      
+//       const Popover2 = (content) => (
+//         <OverlayTrigger trigger="hover" placement="right" overlay={pop}>
+//           <MetisMenu content={content}/>
+//         </OverlayTrigger>
+//       );
+      
+//       return (<Popover2 />);
+// }
 
 const MenuEventos = () => {
     const [open, setOpen] = useState(false);
@@ -201,14 +245,14 @@ const MenuEventos = () => {
 
     const setEventListeners = () => {
         const menus = Array.from(document.querySelectorAll('ul.metismenu-container'));
-        menus.shift(); //retira o menu principal
-
+        menus.shift();
         const menuChildren = menus.map(menu => Array.from(menu.children)).flat();
-        // menuChildren.forEach(child => {
-        //     child.addEventListener('mouseenter', handleClick);   
-            
-        //     child.addEventListener('mouseleave', handleClose);
-        // });
+        console.log(menuChildren);
+        const test = [];
+        menuChildren.forEach((item) => {
+            // item.tooltip({ title: "Teste" });
+        });
+        console.log(test);
     }
 
     useEffect(() => {
@@ -222,22 +266,6 @@ const MenuEventos = () => {
     return (
         <>
             <MetisMenu content={content}/>
-            <Popover
-                id={id}
-                open={open}
-                anchorEl={anchorEl}
-                onClose={handleClose}
-                anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'center',
-                }}
-                transformOrigin={{
-                vertical: 'top',
-                horizontal: 'center',
-                }}
-            >
-                <Typography>The content of the Popover.</Typography>
-            </Popover>
         </>
     );
 };

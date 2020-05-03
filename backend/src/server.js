@@ -28,11 +28,24 @@ io.on('connection', socket => {
     usersDict[user_id] = socket.id;
     connectedUsers[user_id] = room;
     console.log(user_id+" Entrou na sala "+ room);
-
+    io.to(room).emit('new_user_has_connected',user_id);
 
     socket.on('voteQuestion', data => {
-        io.to(room).emit('some event');
+        console.log(data)
+        io.to(room).emit('voteQuestion', data);
     })
+
+    socket.on('new_user_has_connected', data => {
+        console.log(data)
+    })
+
+    socket.on('new_message', data => {
+        console.log(data)
+        io.to(room).emit('new_message', data)
+    })
+
+
+
 
     // io.to('some room').emit('some event');
 

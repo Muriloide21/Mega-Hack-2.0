@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import LoginImage from '../../assets/LoginImage.svg';
 import Bubbles from '../../assets/Bubbles.svg';
 import LinkedIn from '../../assets/SignInLinkedIn.png';
+import { UserService } from '../../utils/UserService';
 
 import styled from 'styled-components';
 
@@ -139,9 +140,8 @@ export default function Login(){
 
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        localStorage.setItem("@Login", JSON.stringify({ email, password }));
 
-
+        UserService.doLogin(email,password);
         history.push("/main");
     }
     

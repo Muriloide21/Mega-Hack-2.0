@@ -84,23 +84,25 @@ const VotesCounter = styled.div`
     align-items: center;
 `;
 
-export default function Question({ user, question_text, management, handleSelect, handleDelete, view }) {
-    const [upVotes,setUpVotes] = useState(0);
-    const [downVotes,setDownVotes] = useState(0);
+export default function Question({ user, question_text, management, handleSelect, handleDelete, view, socket, upvotes, downvotes}) {
+    // const [upVotes,setUpVotes] = useState(0);
+    // const [downVotes,setDownVotes] = useState(0);
     const [lastVote, setLastVote] = useState(undefined);
 
     //Evita múltiplos votos
     const handleUpVote = () => {
         if (lastVote !== 'up') {
             setLastVote('up');
-            setUpVotes(upVotes+1);
+            // setUpVotes(upVotes+1);
+            socket.emit('voteQuestion', {question: {user, text: question_text}, vote: true, change_vote: !!lastVote});
         }
     }
 
     const handleDownVote = () => {
         if (lastVote !== 'down') {
             setLastVote('down');
-            setDownVotes(downVotes+1);
+            // setDownVotes(downVotes+1);
+            socket.emit('voteQuestion', {question: {user, text: question_text}, vote: false, change_vote: !!lastVote});
         }
     }
 
@@ -120,10 +122,10 @@ export default function Question({ user, question_text, management, handleSelect
                 {(!view && management) &&
                     <>
                     <VotesCounter>
-                        <strong style={{color: '#28A745', marginRight: 5}}>{upVotes}</strong>
+                        <strong style={{color: '#28A745', marginRight: 5}}>{upvotes ?? 0}</strong>
                         <FaThumbsUp style={{color: '#28A745', marginRight: 10, marginBottom: 5}} size={15}/>
                         
-                        <strong style={{color: '#C61A1A', marginRight: 5}}>{downVotes}</strong>
+                        <strong style={{color: '#C61A1A', marginRight: 5}}>{downvotes ?? 0}</strong>
                         <FaThumbsDown style={{color: '#C61A1A', marginTop: 1}} size={15}/>
                     </VotesCounter>
                     </>
