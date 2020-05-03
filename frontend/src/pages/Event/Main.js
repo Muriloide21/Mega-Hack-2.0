@@ -40,6 +40,7 @@ const VideoContainer = styled.div`
     display: flex;
     flex-flow: column;
     align-items: center;
+    // background: ${({darkMode}) => darkMode ? '#293c43' : '#ffffff'};
 `;
 
 // const VideoList = styled.div`

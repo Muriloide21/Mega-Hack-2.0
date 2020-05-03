@@ -19,7 +19,7 @@ const Rooms = {};
 const connectedUsers = {};
 
 io.on('connection', socket => {
-    const { user_id, room } = socket.handshake.query;
+    const { user_id , room } = socket.handshake.query;
 
     //Join user in event room
     socket.join(room);
@@ -32,12 +32,14 @@ io.on('connection', socket => {
 
     socket.on('disconnect', function(){
         //Apagar dos dicionários
+        usersDict[user_id] = undefined;
+        connectedUsers[user_id] = undefined;
         
         // io.to('some room').emit('some event');
     });
 
     // io.to('some room').emit('some event');
-    console.log("Entrou na sala "+ room);
+    console.log(user_id+" Entrou na sala "+ room);
 });
 
 app.use((req, res, next) => {

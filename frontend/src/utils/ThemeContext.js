@@ -3,12 +3,12 @@ import React, { createContext, useState, useContext } from 'react';
 const ThemeContext = createContext(false);
 
 export default function ThemeProvider({children}) {
-    const getThemeFromLocalStorage = () =>  localStorage.getItem("@DarkMode");
+    const getThemeFromLocalStorage = () => JSON.parse(localStorage.getItem("@DarkMode"));
     const [darkMode, setDarkMode] = useState(getThemeFromLocalStorage() ?? false);
 
 
     const changeTheme = theme => {
-        localStorage.setItem("@DarkMode", theme);
+        localStorage.setItem("@DarkMode", JSON.stringify(theme));
         setDarkMode(theme);
     }
 

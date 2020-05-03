@@ -139,7 +139,8 @@ export default function Login(){
 
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        localStorage.setItem("@Login", { email, password });
+        localStorage.setItem("@Login", JSON.stringify({ email, password }));
+
 
         history.push("/main");
     }

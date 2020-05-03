@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import socketio from 'socket.io-client';
 
 import InteractiveBar from '../../components/InteractiveBar';
 import Stream from '../../components/Stream';
@@ -13,13 +14,14 @@ const Container = styled.div`
 `;
 
 export default function TalkView(){
-    // Informações a serem recebidas do backend:
-    // Link do vídeo
-    // Room do socket
+    const {email, password} = JSON.parse(localStorage.getItem("@Login"))
 
-    // const socket = useMemo(() => socketio('http://localhost:3333', {
-    //     query: { user_id },
-    // }), [user_id]);
+    // Informações a serem recebidas do backend:
+    // Link do vídeo(dados da palestra)
+    // Room do socket
+    const socket = useMemo(() => socketio('http://localhost:3333', {
+        query: { user_id: email, room: 'BillGatesTalk' },
+    }), [email, password]);
    
     // useEffect(() => {
     //     socket.on('NewQuestion', data => {
