@@ -106,6 +106,7 @@ const content = [
                 speaker: "John Doe",
                 n: 13,
                 m: 45,
+                available: true,
             },
             {
                 icon: <FaDesktop/>,
@@ -116,6 +117,7 @@ const content = [
                 speaker: "Murilo Schirmer",
                 n: 20,
                 m: 45,
+                available: true,
             },
             {
                 icon: <FaLock/>,
@@ -126,6 +128,7 @@ const content = [
                 speaker: "John Doe",
                 n: 13,
                 m: 45,
+                available: false,
             }
         ],
     },
@@ -142,6 +145,7 @@ const content = [
                 speaker: "John Doe",
                 n: 40,
                 m: 45,
+                available: true,
             },
             {
                 icon: <FaLock/>,
@@ -152,6 +156,7 @@ const content = [
                 speaker: "John Doe",
                 n: 40,
                 m: 45,
+                available: false,
             },
             {
                 icon: <FaDesktop/>,
@@ -162,6 +167,7 @@ const content = [
                 speaker: "John Doe",
                 n: 40,
                 m: 45,
+                available: true,
             }
         ],
     },
@@ -178,6 +184,7 @@ const content = [
                 speaker: "John Doe",
                 n: 17,
                 m: 45,
+                available: true,
             },
             {
                 icon: <FaDesktop/>,
@@ -188,6 +195,7 @@ const content = [
                 speaker: "John Doe",
                 n: 17,
                 m: 45,
+                available: true,
             },
             {
                 icon: <FaDesktop/>,
@@ -198,6 +206,7 @@ const content = [
                 speaker: "John Doe",
                 n: 17,
                 m: 45,
+                available: true,
             }
         ],
     }

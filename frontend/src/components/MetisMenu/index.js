@@ -1,26 +1,52 @@
 import React, { useState } from 'react';
 import { FaCaretLeft, FaCaretDown } from 'react-icons/fa';
+import { MdLock } from "react-icons/md";
 
-import Athus from 'react-bootstrap/Popover';
+import Popover from 'react-bootstrap/Popover';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-
-import Popover from 'react-awesome-popover'
 
 import styled from 'styled-components';
 
 import './react-metismenu-new.css';
 
-const pop = ({ title, speaker, description, n, m }) => {
+const PopoverButton = styled.div`
+    margin-top: 10px;
+    width: 80%;
+    height: 33px;
+    transform: translate(10%);
+    border-radius: 38px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    background: ${({available}) => available ? '#5BC34A' : '#E1DC53'};
+    color: ${({available}) => available ? '#ffffff' : '#333333'};
+`;
+
+const pop = ({ title, speaker, description, n, m, available }) => {
     return (
-    <Athus id="popover-basic">
-        <Athus.Title as="h3">{title}</Athus.Title>
-            <Athus.Content>
+    <Popover id="popover-basic">
+        <Popover.Title as="h3">{title}</Popover.Title>
+            <Popover.Content>
+                <img width="70%" height="40%" style={{transform: "translate(22%)"}} src="http://img.youtube.com/vi/6Af6b_wyiwI/0.jpg"/><br/>
                 <strong>Responsável:</strong> {speaker}<br />
                 <strong>Participantes:</strong> {n}/{m}<br />
                 <strong>Descrição:</strong><br />
                 {description}
-            </Athus.Content>
-    </Athus>
+                <PopoverButton available={available}>
+                    {available ?
+                    <> ENTRAR </>
+                    :<>
+                    <MdLock style={{marginRight: 4}}/> DESBLOQUEAR
+                    </>}
+                </PopoverButton>
+            </Popover.Content>
+    </Popover>
 )};
 
 const MetisMenuContainer = styled.ul`
@@ -37,20 +63,16 @@ const Icon = styled.div`
     top: 20px;
 `;
 
-const MetisMenuItem = ({ icon, label, to='', title, speaker, description, n, m }) => {
+const MetisMenuItem = ({ icon, label, to='', title, speaker, description, n, m, available }) => {
     return (
         <>
-        <OverlayTrigger trigger="hover" placement="right" overlay={pop({title, speaker, description, n, m})}>
+        <OverlayTrigger trigger='hover' placement="right" overlay={pop({title, speaker, description, n, m, available})}>
             <li style={{width: '100%'}} className="metismenu-item2" onClick={() => console.log("alo")}>
                 <p className="metismenu-link2">
                     {icon}&nbsp;&emsp;{label}
                 </p>
             </li>
         </OverlayTrigger>
-            {/* <Popover action="hover" placement="top">
-                <button>click me</button>
-                <div style={{background: 'white', width: 100, height: 100}}></div>
-            </Popover> */}
         </>
     );
 };
@@ -69,20 +91,17 @@ const MetisMenuSection = ({ active, icon, label, to='', content, ...props }) => 
                 {content.map((item) => {
                     return (
                         <>
-                    {/* //<Popover action="hover" placement="right-center"> */}
-                        <MetisMenuItem 
-                            icon={item.icon} 
-                            label={item.label} 
+                        <MetisMenuItem
+                            icon={item.icon}
+                            label={item.label}
                             to={item.to}
-                            title={item.title} 
+                            title={item.title}
                             speaker={item.speaker}
                             description={item.description}
                             n={item.n}
-                            m={item.m}/>
-                        {/* <div style={{background: 'white', width: 100, height: 100}}>
-                        </div> */}
-                    {/* </Popover> */}
-                    </>
+                            m={item.m}
+                            available={item.available}/>
+                        </>
                     );
                 })}
             </ul>
@@ -116,21 +135,3 @@ export default function MetisMenu({ content }) {
 		</MetisMenuContainer>
 	);
 }
-
-// const MetisSubItens = (content) => {
-//     const pop = (
-//         <Popover id="popover-basic">
-//             <Popover.Title as="h3">Teste</Popover.Title>
-//                 <Popover.Content>
-//                     <strong>Responsável:</strong> Athus Cavalini<br />
-//                     <strong>Participantes:</strong> 12/45<br />
-//                     <strong>Descrição:</strong><br />
-//                     Tralalalala
-//                 </Popover.Content>
-//         </Popover>
-//     );
-
-//     return (<OverlayTrigger trigger="click" placement="right" overlay={pop}>
-//       {content}
-//     </OverlayTrigger>)
-// };

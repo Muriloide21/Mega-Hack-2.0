@@ -154,11 +154,11 @@ export default function Login(){
 
             <LoginContainer>
                 <div style={{height: 300, width: '100%', background: '#fff', marginBottom: 25}}>
-                    Logo
+                    <img src=""/>
                 </div>
 
                 <Form onSubmit={handleSubmit}>
-                    <Input type="email" ref={emailRef} placeholder='E-mail'/>
+                    <Input type="text" ref={emailRef} placeholder='E-mail'/>
                     <Input type="password" ref={passwordRef} placeholder='Senha'/>
                     <Button type="submit">Login</Button>
 

@@ -87,6 +87,14 @@ const VotesCounter = styled.div`
 export default function Question({ user, question_text, management, handleSelect, handleDelete, view, socket, upvotes, downvotes}) {
     // const [upVotes,setUpVotes] = useState(0);
     // const [downVotes,setDownVotes] = useState(0);
+    const imageLinks = {
+        Athus: "https://media-exp1.licdn.com/dms/image/C4E03AQF4vxK5m13VWg/profile-displayphoto-shrink_200_200/0?e=1594252800&v=beta&t=RT40AtVykz_qAivwNf08fXWKQO6_7RLY9Yr0ohOJiDw",
+        Murilo: "https://media-exp1.licdn.com/dms/image/C4D03AQHuXYfWwb1fkw/profile-displayphoto-shrink_200_200/0?e=1594252800&v=beta&t=TBLjKPZYNXByYMYBD4aH45D9HOiVKTO_uJTWYP0xxlU",
+        Leonardo: "https://media-exp1.licdn.com/dms/image/C4D03AQFGiAFu9-v5hA/profile-displayphoto-shrink_200_200/0?e=1594252800&v=beta&t=_mvKHcqv4LLlF72p0EpdCYr1aHzYvvyEsUu6B402qzI",
+        Vinicius: "https://media-exp1.licdn.com/dms/image/C4E03AQG5sBqLXqEasg/profile-displayphoto-shrink_200_200/0?e=1593648000&v=beta&t=VDwSJ8NWFhHmfDkni1SLDXRxup1vbTAlstuRzS1D1Sc",
+        Matheus: "https://media-exp1.licdn.com/dms/image/C4D03AQFlfIFFuEmIQQ/profile-displayphoto-shrink_200_200/0?e=1594252800&v=beta&t=ZRe-IEWQr90MUqhRR5AWCLokQ7jcpFkLIN8b29-emL0",
+    }
+
     const [lastVote, setLastVote] = useState(undefined);
 
     //Evita múltiplos votos
@@ -110,7 +118,7 @@ export default function Question({ user, question_text, management, handleSelect
         <Container>
             <QuestionContainer>
                 <ImageContainer>
-                    <Image src="https://media-exp1.licdn.com/dms/image/C4E03AQG5sBqLXqEasg/profile-displayphoto-shrink_200_200/0?e=1593648000&v=beta&t=VDwSJ8NWFhHmfDkni1SLDXRxup1vbTAlstuRzS1D1Sc"/>
+                    <Image src={imageLinks[user]?? "https://cdn0.iconfinder.com/data/icons/set-ui-app-android/32/8-512.png"}/>
                 </ImageContainer>
 
                 <TextFields>
