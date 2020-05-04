@@ -13,5 +13,5 @@ Este é o repositório com a solução do Time 14 para o problema proposto pela 
 - [Leonardo](github.com/LKhoe) E-mail: leonardokhoury@hotmail.com
 - [Matheus](github.com/Math-Gomes) E-mail: mathjvmf@gmail.com
 - [Murilo](https://github.com/Muriloide21/) E-mail: muriloschirmer16@gmail.com
-- [Vinicius]() E-mail: vinilucasreis1999@yahoo.com.br
+- [Vinicius](https://github.com/VLRTroll) E-mail: vinilucasreis1999@yahoo.com.br
 
