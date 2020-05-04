@@ -1,7 +1,7 @@
 # HackTalk - Mega-Hack-2.0
 Este é o repositório com a solução do Time 14 para o problema proposto pela PEGN e Época Negócios.
 
-<b>Link do Protótipo:</b> http://hacktalk.lam.software/main
+<b>Link do Protótipo:</b> hacktalk.lam.software/
 
 ## O que é o HalkTalk?
 Uma plataforma moderna que combina experiências presenciais com os recursos e possibilidades de um evento virtual.
@@ -15,12 +15,12 @@ O projeto consiste no desenvolvimento de uma plataforma para realização de eve
 
 
 ## Qual o foco numa feira de negócios?
+Com base nos resultados obtidos na pesquisa, foram decididas as funcionalidades principais da plataforma, de modo a proporcionar a melhor experiência de um evento físico e online para todos.
+
 <h4 align="center">
   <img src="assets/stats.PNG"/><br>
   Dados coletados através de formulários do Google Forms
 </h3>
-
-Com base nos resultados obtidos na pesquisa, foram decididas as funcionalidades principais da plataforma, de modo a proporcionar a melhor experiência de um evento físico e online para todos.
 
 
 ## Recursos do Palestrante
