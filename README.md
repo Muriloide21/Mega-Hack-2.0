@@ -1,7 +1,7 @@
 # HackTalk - Mega-Hack-2.0
 Este é o repositório com a solução do Time 14 para o problema proposto pela PEGN e Época Negócios.
 
-<b>Link do Protótipo:</b> hacktalk.lam.software/
+<b>Link do Protótipo:</b> http://hacktalk.lam.software/
 
 ## O que é o HalkTalk?
 Uma plataforma moderna que combina experiências presenciais com os recursos e possibilidades de um evento virtual.
