@@ -43,9 +43,9 @@ Com base nos resultados obtidos na pesquisa, foram decididas as funcionalidades 
 
 
 ### Integrantes:
-- [Athus](github.com/athuscavalini) E-mail: athuscavalini@gmail.com
-- [Leonardo](github.com/LKhoe) E-mail: leonardokhoury@hotmail.com
-- [Matheus](github.com/Math-Gomes) E-mail: mathjvmf@gmail.com
+- [Athus](https://github.com/athuscavalini) E-mail: athuscavalini@gmail.com
+- [Leonardo](https://github.com/LKhoe) E-mail: leonardokhoury@hotmail.com
+- [Matheus](https://github.com/Math-Gomes) E-mail: mathjvmf@gmail.com
 - [Murilo](https://github.com/Muriloide21/) E-mail: muriloschirmer16@gmail.com
 - [Vinicius](https://github.com/VLRTroll) E-mail: vinilucasreis1999@yahoo.com.br
 
