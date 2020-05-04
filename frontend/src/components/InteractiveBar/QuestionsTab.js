@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { MdSend } from "react-icons/md";
+import { MdMic, MdSend } from "react-icons/md";
 
 import Question from '../../components/Question';
 import { UserService } from '../../utils/UserService';
@@ -37,15 +37,10 @@ export default function QuestionsTab({ socket, onScreen, management}) {
     const user = UserService.getEmail();
     const textRef = useRef();
 
-    const testQuestions = [{user: 'Vinicius', text: 'Pergunta genérica aqui', upvotes: 0, downvotes: 0},
-    {user: 'Athus', text: 'Pergunta genérica aqui', upvotes: 0, downvotes: 0},
-    {user: 'Matheus', text: 'Pergunta genérica aqui', upvotes: 0, downvotes: 0}]
+    const testQuestions = [{user: 'Vinicius', text: 'Quais os próximos passos, na sua opinião?', upvotes: 0, downvotes: 0},
+    {user: 'Matheus', text: 'Não entendi as pontuações sobre a internet.', upvotes: 0, downvotes: 0}]
     
-    const [questions, setQuestions] = useState([
-        {user: 'Vinicius', text: 'Pergunta genérica aqui', upvotes: 0, downvotes: 0},
-        {user: 'Athus', text: 'Pergunta genérica aqui', upvotes: 0, downvotes: 0},
-        {user: 'Matheus', text: 'Pergunta genérica aqui', upvotes: 0, downvotes: 0},
-    ]);
+    const [questions, setQuestions] = useState(testQuestions);
     
     useEffect(() => {
         if(socket){
@@ -76,7 +71,8 @@ export default function QuestionsTab({ socket, onScreen, management}) {
                     temp2.downvotes += 1;
                     if (change_vote) temp2.upvotes -= 1;
                 }
-                setQuestions([...questions, temp2])
+                var temp3 = [...questions, temp2].sort((q1, q2) => q2.upvotes - q1.upvotes)
+                setQuestions(temp3)
                 console.log(questions)
             }
         }
@@ -128,12 +124,18 @@ export default function QuestionsTab({ socket, onScreen, management}) {
 
         {!management &&
             <MakeQuestion>
-                <TextArea ref={textRef} placeholder="Insira sua pergunta aqui..."/>    
-                <MdSend 
-                    size={25} 
-                    style={{cursor: "pointer", width: 50, color: 'white'}} 
-                    onClick={handleAddQuestion}
-                />
+                <TextArea ref={textRef} placeholder="Insira sua pergunta aqui..."/>  
+                <div style={{height: "100%", display:"flex", flexDirection: 'column', justifyContent: 'space-around'}}>  
+                    <MdSend 
+                        size={25} 
+                        style={{cursor: "pointer", width: 50, color: 'white'}} 
+                        onClick={handleAddQuestion}
+                    />
+                    <MdMic
+                        style={{cursor: "pointer", width: 50, color: 'white'}}
+                        size={25}
+                    /> 
+                </div>
             </MakeQuestion>
         }
     </>

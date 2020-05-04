@@ -33,7 +33,7 @@ const QuestionContainer = styled.div`
 const TextFields = styled.div`
     flex: 1;
     padding: 10px 5px;
-    word-break: break-all;
+    word-break: break-word;
     overflow-y: auto;
 `;
 

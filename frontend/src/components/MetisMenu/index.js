@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaCaretLeft, FaCaretDown } from 'react-icons/fa';
 import { MdLock } from "react-icons/md";
+import { useHistory } from "react-router-dom";
 
 import Popover from 'react-bootstrap/Popover';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
@@ -28,23 +29,21 @@ const PopoverButton = styled.div`
     color: ${({available}) => available ? '#ffffff' : '#333333'};
 `;
 
-const pop = ({ title, speaker, description, n, m, available }) => {
+const pop = ({ title, speaker, description, n, m, available, img }) => {
     return (
     <Popover id="popover-basic">
         <Popover.Title as="h3">{title}</Popover.Title>
             <Popover.Content>
-                <img width="70%" height="40%" style={{transform: "translate(22%)"}} src="http://img.youtube.com/vi/6Af6b_wyiwI/0.jpg"/><br/>
+                <img width="70%" height="40%" style={{transform: "translate(22%)"}} src={img}/><br/>
                 <strong>Responsável:</strong> {speaker}<br />
                 <strong>Participantes:</strong> {n}/{m}<br />
                 <strong>Descrição:</strong><br />
-                {description}
-                <PopoverButton available={available}>
-                    {available ?
-                    <> ENTRAR </>
-                    :<>
-                    <MdLock style={{marginRight: 4}}/> DESBLOQUEAR
-                    </>}
-                </PopoverButton>
+                <div style={{clear:"both", textAlign: "justify"}}>{description}</div>
+                {!available &&
+                    <PopoverButton available={available}>
+                        <MdLock style={{marginRight: 4}}/> COMPRAR
+                    </PopoverButton>
+                }   
             </Popover.Content>
     </Popover>
 )};
@@ -63,11 +62,19 @@ const Icon = styled.div`
     top: 20px;
 `;
 
-const MetisMenuItem = ({ icon, label, to='', title, speaker, description, n, m, available }) => {
+const MetisMenuItem = ({ icon, label, to='', title, speaker, description, n, m, available, img="http://img.youtube.com/vi/6Af6b_wyiwI/0.jpg" }) => {
+    const history = useHistory();
+    
+    function handleClick(event) {
+        event.stopPropagation();
+        console.log('alo');
+        history.push("/talkview");
+    }
+
     return (
         <>
-        <OverlayTrigger trigger='hover' placement="right" overlay={pop({title, speaker, description, n, m, available})}>
-            <li style={{width: '100%'}} className="metismenu-item2" onClick={() => console.log("alo")}>
+        <OverlayTrigger trigger='hover' placement="right" overlay={pop({title, speaker, description, n, m, available, img})}>
+            <li style={{width: '100%'}} className="metismenu-item2" onClick={handleClick}>
                 <p className="metismenu-link2">
                     {icon}&nbsp;&emsp;{label}
                 </p>
@@ -100,7 +107,8 @@ const MetisMenuSection = ({ active, icon, label, to='', content, ...props }) => 
                             description={item.description}
                             n={item.n}
                             m={item.m}
-                            available={item.available}/>
+                            available={item.available}
+                            img={item.img}/>
                         </>
                     );
                 })}

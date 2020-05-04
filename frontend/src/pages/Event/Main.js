@@ -133,15 +133,15 @@ export default function Main(){
                     >
                         <div>
                             <img
-                                src='http://img.youtube.com/vi/6Af6b_wyiwI/0.jpg'
+                                src='http://img.youtube.com/vi/2g8BeujckJY/0.jpg'
                                 alt='Palestra 4'
                                 style={{ display: 'block', width: '100%' }}
                                 onClick={() => {menu1 === 0 ? history.push("/talkview") : menu1 = 0}}
                             />
                         </div>
-                        <img src='http://img.youtube.com/vi/6Af6b_wyiwI/0.jpg' alt='Palestra 4' onClick={() => {menu1 === 1 ? history.push("/talkview") : menu1 = 1}} />
-                        <img src='http://img.youtube.com/vi/6Af6b_wyiwI/0.jpg' alt='Palestra 4' onClick={() => {menu1 === 2 ? history.push("/talkview") : menu1 = 2}} />
-                        <img src='http://img.youtube.com/vi/6Af6b_wyiwI/0.jpg' alt='Palestra 4' onClick={() => {menu1 === 3 ? history.push("/talkview") : menu1 = 3}} />
+                        <img src='http://img.youtube.com/vi/bW941OpsnMM/0.jpg' alt='Palestra 4' onClick={() => {menu1 === 1 ? history.push("/talkview") : menu1 = 1}} />
+                        <img src='http://img.youtube.com/vi/Hu4Yvq-g7_Y/0.jpg' alt='Palestra 4' onClick={() => {menu1 === 2 ? history.push("/talkview") : menu1 = 2}} />
+                        <img src='http://img.youtube.com/vi/LnJwH_PZXnM/0.jpg' alt='Palestra 4' onClick={() => {menu1 === 3 ? history.push("/talkview") : menu1 = 3}} />
                         <img src='http://img.youtube.com/vi/6Af6b_wyiwI/0.jpg' alt='Palestra 4' onClick={() => {menu1 === 4 ? history.push("/talkview") : menu1 = 4}} />
                     </Coverflow>
 
@@ -166,16 +166,16 @@ export default function Main(){
                     >
                         <div>
                             <img
-                                src='http://img.youtube.com/vi/6Af6b_wyiwI/0.jpg'
+                                src='http://img.youtube.com/vi/JD4O7ama3o8/0.jpg'
                                 alt='Palestra 4'
                                 style={{ display: 'block', width: '100%' }}
                                 onClick={() => {menu2 === 0 ? history.push("/talkview") : menu2 = 0}}
                             />
                         </div>
-                        <img src='http://img.youtube.com/vi/6Af6b_wyiwI/0.jpg' alt='Palestra 4' onClick={() => {menu2 === 1 ? history.push("/talkview") : menu2 = 1}} />
-                        <img src='http://img.youtube.com/vi/6Af6b_wyiwI/0.jpg' alt='Palestra 4' onClick={() => {menu2 === 2 ? history.push("/talkview") : menu2 = 2}} />
-                        <img src='http://img.youtube.com/vi/6Af6b_wyiwI/0.jpg' alt='Palestra 4' onClick={() => {menu2 === 3 ? history.push("/talkview") : menu2 = 3}} />
-                        <img src='http://img.youtube.com/vi/6Af6b_wyiwI/0.jpg' alt='Palestra 4' onClick={() => {menu2 === 4 ? history.push("/talkview") : menu2 = 4}} />
+                        <img src='http://img.youtube.com/vi/TQMbvJNRpLE/0.jpg' alt='Palestra 4' onClick={() => {menu2 === 1 ? history.push("/talkview") : menu2 = 1}} />
+                        <img src='http://img.youtube.com/vi/5MgBikgcWnY/0.jpg' alt='Palestra 4' onClick={() => {menu2 === 2 ? history.push("/talkview") : menu2 = 2}} />
+                        <img src='http://img.youtube.com/vi/LNHBMFCzznE/0.jpg' alt='Palestra 4' onClick={() => {menu2 === 3 ? history.push("/talkview") : menu2 = 3}} />
+                        <img src='http://img.youtube.com/vi/8S0FDjFBj8o/0.jpg' alt='Palestra 4' onClick={() => {menu2 === 4 ? history.push("/talkview") : menu2 = 4}} />
                     </Coverflow>
 
                     {/* <VideoList darkMode={themeDark}>

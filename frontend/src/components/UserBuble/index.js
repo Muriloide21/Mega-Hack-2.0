@@ -49,10 +49,18 @@ const Icon = styled.div`
 export default function UserBuble({user, skill, management, voice_request = true}) {
     const [voiceAuth, setVoiceAuth] = useState(false);
 
+    const imageLinks = {
+        Athus: "https://media-exp1.licdn.com/dms/image/C4E03AQF4vxK5m13VWg/profile-displayphoto-shrink_200_200/0?e=1594252800&v=beta&t=RT40AtVykz_qAivwNf08fXWKQO6_7RLY9Yr0ohOJiDw",
+        Murilo: "https://media-exp1.licdn.com/dms/image/C4D03AQHuXYfWwb1fkw/profile-displayphoto-shrink_200_200/0?e=1594252800&v=beta&t=TBLjKPZYNXByYMYBD4aH45D9HOiVKTO_uJTWYP0xxlU",
+        Leonardo: "https://media-exp1.licdn.com/dms/image/C4D03AQFGiAFu9-v5hA/profile-displayphoto-shrink_200_200/0?e=1594252800&v=beta&t=_mvKHcqv4LLlF72p0EpdCYr1aHzYvvyEsUu6B402qzI",
+        Vinicius: "https://media-exp1.licdn.com/dms/image/C4E03AQG5sBqLXqEasg/profile-displayphoto-shrink_200_200/0?e=1593648000&v=beta&t=VDwSJ8NWFhHmfDkni1SLDXRxup1vbTAlstuRzS1D1Sc",
+        Matheus: "https://media-exp1.licdn.com/dms/image/C4D03AQFlfIFFuEmIQQ/profile-displayphoto-shrink_200_200/0?e=1594252800&v=beta&t=ZRe-IEWQr90MUqhRR5AWCLokQ7jcpFkLIN8b29-emL0",
+    }
+
     return (
         <Container>
             <ImageContainer>
-                <Image src="https://media-exp1.licdn.com/dms/image/C4E03AQF4vxK5m13VWg/profile-displayphoto-shrink_200_200/0?e=1593648000&v=beta&t=-uQlX4QmJ6FNqGOf1AeE6Xluaxh4-PEIV566IXVInPU"/>
+                <Image src={imageLinks[user]}/>
             </ImageContainer>
 
             <TextFields>

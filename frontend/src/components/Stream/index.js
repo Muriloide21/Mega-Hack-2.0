@@ -14,9 +14,9 @@ const Container = styled.div`
     padding: 2% 5% 0;
     background: ${({darkMode}) => darkMode ? '#293c43' : '#ffffff'};
     overflow-y: auto;
-    /* &::-webkit-scrollbar {
-        display: none;
-    } */
+        &::-webkit-scrollbar {
+            display: none;
+        }
     position: relative;
 `;
 
@@ -91,6 +91,7 @@ const QuestionContainer = styled.div`
     position: absolute;
     bottom: 0;
     padding-bottom: 15px;
+    z-index: 80;
 `;
 
 const CanvasContainer = styled.div`
@@ -118,20 +119,20 @@ export default function Stream({ management, question, handleCloseQuestion }) {
     
     return (
         <Container darkMode={themeDark}>
-            <Text darkMode={themeDark} style={{fontSize: '3rem', fontWeight:'bold', marginBottom: 10}}>
-                Título do Vídeo
+            <Text darkMode={themeDark} style={{fontSize: '2.5rem', fontWeight:'bold', marginBottom: 10}}>
+                Palestra: Isolamento e Tecnologia
             </Text>
             
             {!management 
             ? <>
-                <iframe title="video" width="100%" height="500" src="https://www.youtube.com/embed/6Af6b_wyiwI?modestbranding=1&loop=1&iv_load_policy=3&color=yellow" frameborder="0" showinfo='0' allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" modestbranding allowFullScreen style={{marginBottom: '1em'}} />
+                <iframe title="video" width="100%" height="500" src="https://www.youtube.com/embed/6Af6b_wyiwI?modestbranding=1&loop=1&iv_load_policy=3&color=yellow&autoplay=1&start=54" frameborder="0" showinfo='0' allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" modestbranding allowFullScreen style={{marginBottom: '1em'}} />
                 <VideoInfo>
-                    <Text darkMode={themeDark}>Instrutor fulano</Text>
+                    <Text darkMode={themeDark}>Palestrante: Bill Gates</Text>
                     <Text darkMode={themeDark}>47/50 participantes</Text>
                 </VideoInfo>
                 
                 <Text darkMode={themeDark} style={{clear:"both", textAlign: "justify"}}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lectus amet, aliquam pellentesque enim. In euismod tincidunt purus condimentum et platea arcu facilisis. Tincidunt massa enim, porttitor praesent mi blandit eget. Vel urna leo odio metus dis tortor tortor nibh. Nunc rhoncus lectus feugiat consequat purus sed risus aliquam. Non egestas molestie urna tristique.
+                    Em 2014, o mundo evitou uma terrível epidemia global do Ebola, graças a milhares de generosos profissionais de saúde e, francamente, graças também a muita sorte. Em retrospectiva, sabemos o que deveríamos ter feito melhor. Então, Bill Gates sugere que agora é a hora de colocar todas as nossas boas ideias em prática, de planejamento de cenários a treinamento de profissionais de saúde. Como ele diz: "Não há razão para pânico, mas precisamos nos apressar".
                 </Text>
             </>
             : <>

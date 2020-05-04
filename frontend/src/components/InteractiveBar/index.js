@@ -68,9 +68,9 @@ const ButtonGroup = styled.div`
 
 export default function InteractiveBar({ management, onScreen, socket }) {
     const [questions, setQuestions] = useState([
-        {user: 'Vinicius', text: 'Pergunta genérica aqui'},
-        {user: 'Athus', text: 'Pergunta genérica aqui'},
-        {user: 'Matheus', text: 'Pergunta genérica aqui'},
+        {user: 'Vinicius', text: 'Quais os próximos passos, na sua opinião?'},
+        {user: 'Athus', text: 'Você acredita que estamos preparados?'},
+        {user: 'Matheus', text: 'Não entendi as pontuações sobre a internet.'},
     ]);
     console.log('carregou interactiveBar')
 
@@ -92,7 +92,7 @@ export default function InteractiveBar({ management, onScreen, socket }) {
                 {/* Aba de Anotacoes */}
                 <div id='notes-tab' icon={<FaStickyNote />}>
                     <TitleBar>
-                        <strong>Anotacões da palestra 4</strong>
+                        <strong>Anotacões da palestra 1</strong>
 
                         <ButtonGroup>
                             <IoMdCopy size={20} style={{marginRight: 10}} onClick={(e) => {
@@ -117,11 +117,15 @@ export default function InteractiveBar({ management, onScreen, socket }) {
                 {/* Aba de Participantes da Palestra */}
                 <div id='users-tab2' icon={<FaUserAlt />}>
                     <TitleBar style={{minHeight: 45}}>
-                        <strong>Usuários da palestra 4</strong>
+                        <strong>Usuários da palestra 1</strong>
                     </TitleBar>
 
                     <List style={{marginTop: 12}}>
-                        {Array(15).fill(<UserBuble key={Math.random()} user={'Athus'} skill={"Business"} management={management}/>)}
+                        <UserBuble key={Math.random()} user={'Athus'} skill={"Negócios Sociais"} management={management}/>
+                        <UserBuble key={Math.random()} user={'Leonardo'} skill={"Analista de Sistemas"} management={management}/>
+                        <UserBuble key={Math.random()} user={'Matheus'} skill={"Desenvolvedor Web"} management={management}/>
+                        <UserBuble key={Math.random()} user={'Murilo'} skill={"Engenheiro de Software"} management={management}/>
+                        <UserBuble key={Math.random()} user={'Vinicius'} skill={"Designer UX"} management={management}/>
                     </List>
                 </div>
             </Tabs>

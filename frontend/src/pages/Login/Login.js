@@ -153,8 +153,8 @@ export default function Login(){
             </ImageContainer>
 
             <LoginContainer>
-                <div style={{height: 300, width: '100%', background: '#fff', marginBottom: 25}}>
-                    <img src=""/>
+                <div style={{height: 150, width: 200, background: 'transparent', marginBottom: 25, marginTop: -45}}>
+                    <img height='150' width='100%' src="https://i.imgur.com/za6JNCd.png"/>
                 </div>
 
                 <Form onSubmit={handleSubmit}>

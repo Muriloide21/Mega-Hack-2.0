@@ -140,34 +140,36 @@ const content = [
                 icon: <FaDesktop/>,
                 label: 'Palestra 1',
                 //to: '#another-link',
-                title: "Título da palestra",
-                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                speaker: "John Doe",
-                n: 40,
-                m: 45,
+                title: "Isolamento e Tecnologia",
+                description: "Em 2014, o mundo evitou uma terrível epidemia global do Ebola, graças a milhares de generosos profissionais de saúde e, francamente, graças também a muita sorte. Em retrospectiva, sabemos o que deveríamos ter feito melhor. Então, Bill Gates sugere que agora é a hora de colocar todas as nossas boas ideias em prática, de planejamento de cenários a treinamento de profissionais de saúde. Como ele diz: \"Não há razão para pânico, mas precisamos nos apressar\".",
+                speaker: "Bill Gates",
+                n: 47,
+                m: 50,
                 available: true,
             },
             {
                 icon: <FaLock/>,
                 label: 'Palestra 2',
                 //to: '#another-link',
-                title: "Título da palestra",
-                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                speaker: "John Doe",
+                title: "Como falar de forma que as pessoas queiram ouvir",
+                description: "Você já se sentiu como se, ao falar, ninguém ouvisse? Julian Treasure está aqui para ajudar. Nessa palestra bastante útil, o especialista em sons demonstra como falar poderosamente; desde exercícios vocais até dicas de como falar com empatia. Uma palestra que pode ajudar o mundo a soar mais bonito.",
+                speaker: "Julian Treasure",
                 n: 40,
                 m: 45,
                 available: false,
+                img: "http://img.youtube.com/vi/eIho2S0ZahI/0.jpg"
             },
             {
                 icon: <FaDesktop/>,
                 label: 'Palestra 3',
                 //to: '#another-link',
-                title: "Título da palestra",
-                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                speaker: "John Doe",
+                title: "Como detectar um mentiroso",
+                description: "Em qualquer dia, mentem para nós de 10 a 200 vezes, e as pistas para detectar estas mentiras podem ser sutis e contra-intuitivas . Pamela Meyer, autora de \"Liespotting\" (Detectando mentiras), mostra maneiras usadas por quem é treinado para reconhecer tentativas de engano -- e ela argumenta que honestidade é um valor que vale a pena preservar.",
+                speaker: "Pamela Meyer",
                 n: 40,
                 m: 45,
                 available: true,
+                img: "http://img.youtube.com/vi/P_6vDLq64gE/0.jpg"
             }
         ],
     },
@@ -224,7 +226,8 @@ export default function TalksList() {
     return (
         <Container>
                 <EventContainer>
-                    <p style={{transform: "translate(0,120%)"}}>HackTalk 1.0</p>
+                    <img height='60' width='50%' src="https://i.imgur.com/za6JNCd.png" style={{margin: "10px auto"}}/>
+                    {/* <p style={{transform: "translate(0,120%)"}}>HackTalk 1.0</p> */}
                 </EventContainer>
                     
                     <ButtonGroupContainer>
