@@ -2,8 +2,8 @@
 Este é o repositório com a solução do Time 14 para o problema proposto pela PEGN e Época Negócios.
 
 <h4 align="center">
-  <img src="assets/hack1-black.png" width="250px" /><br>
-  <b>Seja um verdadeiro Heroi!</b>
+  <img src="assets/hack1-black.png" width="200px" /><br>
+  <b>Conectar é o nosso negócio.</b>
 </h4>
 
 
