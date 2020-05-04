@@ -36,6 +36,11 @@ Com base nos resultados obtidos na pesquisa, foram decididas as funcionalidades 
   <img src="assets/resumo.PNG"/><br>
 </h4>
 
+<h4 align="center">
+  <img src="assets/tela1.PNG" width="400px"/>
+  <img src="assets/tela2.PNG" width="400px"/>
+</h4>
+
 
 ### Integrantes:
 - [Athus](github.com/athuscavalini) E-mail: athuscavalini@gmail.com
