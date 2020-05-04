@@ -6,7 +6,15 @@ Este é o repositório com a solução do Time 14 para o problema proposto pela 
   <b>Conectar é o nosso negócio.</b>
 </h4>
 
+## O que oferecemos?
+Uma plataforma moderna que combina experiências presenciais com os recursos e possibilidades de um evento virtual.
 
+## Qual o foco numa feira de negócios?
+<p align="center">Dados coletados através de formulários do Google Forms</p>
+
+## Recursos do Palestrante
+
+## Recursos do Participante
 
 ### Integrantes:
 - [Athus](github.com/athuscavalini) E-mail: athuscavalini@gmail.com
