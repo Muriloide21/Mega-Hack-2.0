@@ -3,15 +3,27 @@ Este é o repositório com a solução do Time 14 para o problema proposto pela 
 
 <b>Link do Protótipo:</b> http://hacktalk.lam.software/
 
-## O que é o HalkTalk?
-Uma plataforma moderna que combina experiências presenciais com os recursos e possibilidades de um evento virtual.
-
-O projeto consiste no desenvolvimento de uma plataforma para realização de eventos virtuais no estilo "feira de negócios" (congressos, fóruns, seminários, entre outros). A plataforma gerencia uma ou mais transmissões ao vivo acontecendo simultaneamente, chamadas "salas", permitindo uma navegação simples e fácil dos inscritos no evento entre as transmissões que possui permissão. Como um diferencial para estes eventos virtuais, será possível rever palestras ocorridas anteriormente, solucionando assim o problema de 2 ou mais palestras de interesse que conflitam em horário. A ideia é proporcionar uma aplicação simples, com navegação intuitiva e repleto de funcionalidades com foco em melhorar os aspectos desejados nestes eventos, como: Networking, Benchmark, Conversas com Palestrantes, entre outros. Toda a plataforma funcionará online, não sendo necessário o download de qualquer ferramenta específica para participar do evento.
 
 <h3 align="center">
   <img src="assets/hack1-black.png" width="200px" /><br>
   <b>Conectar é o nosso negócio.</b>
 </h2>
+
+<p align="center">
+  <a href="#recursos-do-palestrante">Recursos do Palestrante</a> •
+  <a href="#recursos-do-participante">Recursos do Participante</a> •
+  <a href="#prot%C3%B3tipo-de-telas---figma">Protótipo de Telas</a> •
+  <a href="#integrantes">Integrantes</a>
+</p>
+
+
+## O que é o HalkTalk?
+Uma plataforma moderna que combina experiências presenciais com os recursos e possibilidades de um evento virtual.
+
+O projeto consiste no desenvolvimento de uma plataforma para realização de eventos virtuais no estilo "feira de negócios" (congressos, fóruns, seminários, entre outros). A plataforma gerencia uma ou mais transmissões ao vivo acontecendo simultaneamente, chamadas "salas", permitindo uma navegação simples e fácil dos inscritos no evento entre as transmissões que possui permissão. Como um diferencial para estes eventos virtuais, será possível rever palestras ocorridas anteriormente, solucionando assim o problema de 2 ou mais palestras de interesse que conflitam em horário. A ideia é proporcionar uma aplicação simples, com navegação intuitiva e repleto de funcionalidades com foco em melhorar os aspectos desejados nestes eventos, como: Networking, Benchmark, Conversas com Palestrantes, entre outros. Toda a plataforma funcionará online, não sendo necessário o download de qualquer ferramenta específica para participar do evento.
+
+
+[![HackTalk - Desafio PEGN](https://github.com/Muriloide21/Mega-Hack-2.0/blob/master/assets/thumb.PNG)](https://www.youtube.com/watch?v=dm2kMlYPBwo "HackTalk - Desafio PEGN")
 
 
 ## Qual o foco numa feira de negócios?
