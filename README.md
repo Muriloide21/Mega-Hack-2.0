@@ -23,7 +23,7 @@ Uma plataforma moderna que combina experiências presenciais com os recursos e p
 O projeto consiste no desenvolvimento de uma plataforma para realização de eventos virtuais no estilo "feira de negócios" (congressos, fóruns, seminários, entre outros). A plataforma gerencia uma ou mais transmissões ao vivo acontecendo simultaneamente, chamadas "salas", permitindo uma navegação simples e fácil dos inscritos no evento entre as transmissões que possui permissão. Como um diferencial para estes eventos virtuais, será possível rever palestras ocorridas anteriormente, solucionando assim o problema de 2 ou mais palestras de interesse que conflitam em horário. A ideia é proporcionar uma aplicação simples, com navegação intuitiva e repleto de funcionalidades com foco em melhorar os aspectos desejados nestes eventos, como: Networking, Benchmark, Conversas com Palestrantes, entre outros. Toda a plataforma funcionará online, não sendo necessário o download de qualquer ferramenta específica para participar do evento.
 
 
-[![HackTalk - Desafio PEGN](https://github.com/Muriloide21/Mega-Hack-2.0/blob/master/assets/thumb.PNG)](https://www.youtube.com/watch?v=dm2kMlYPBwo "HackTalk - Desafio PEGN")
+[![HackTalk - Desafio PEGN](https://github.com/Muriloide21/Mega-Hack-2.0/blob/master/assets/thumb.png)](https://www.youtube.com/watch?v=dm2kMlYPBwo "HackTalk - Desafio PEGN")
 
 
 ## Qual o foco numa feira de negócios?
