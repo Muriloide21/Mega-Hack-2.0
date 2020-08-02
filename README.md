@@ -1,5 +1,5 @@
 # HackTalk - Mega-Hack-2.0
-Este é o repositório com a solução do Time 14 para o problema proposto pela PEGN e Época Negócios.
+Este é o repositório com a solução do Time 14, 🏆 8º lugar no desafio, para o problema proposto pela PEGN e Época Negócios.
 
 <b>Link do Protótipo:</b> http://hacktalk.lam.software/
 
